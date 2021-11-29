@@ -1,155 +1,28 @@
 ## Postwork Sesión 6
 
-A lo largo de este proyecto reafirmaremos lo que se ha aprendido durante las sesiones.
-
-### Módulo 6 - Apache Kafka
-
-- Continuamos con el postwork de la sesion 5.
-- Se crean los siguientes archivos
-
-```java
-package org.bedu.postworksone.kafka.serializer;
-
-import org.apache.kafka.common.header.Headers;
-import org.apache.kafka.common.serialization.Serializer;
-import org.bedu.postworksone.documents.Doctor;
-import org.bedu.postworksone.protos.DoctorProtoConverter;
-
-import java.util.Map;
-
-public class KafkaDoctorSerializer implements Serializer<Doctor> {
-
-    @Override
-    public byte[] serialize(String s, Doctor doctor) {
-
-        return DoctorProtoConverter.from(doctor).toByteArray();
-    }
+### Objetivo
+- Entender qué es una entidad y cómo declararla usando las anotaciones de JPA dentro de nuestro proyecto.
+- Aprender qué es un repositorio de Spring Data, la forma de declararlos y de usarlos para las operaciones relacionadas con el manejo de las bases de datos.
+- Usar la consola de H2 para visualizar la información de la base de datos embebida dentro de nuestra aplicación.
 
 
-    @Override
-    public void configure(Map<String, ?> configs, boolean isKey) {
-        //Nothing to do, this serializer does not need extra configuration
-    }
+#### Desarrollo   
+1. Agrega el driver de MySQL como dependencia del proyecto.
 
-    @Override
-    public byte[] serialize(String topic, Headers headers, Doctor data) {
-        return DoctorProtoConverter.from(data).toByteArray();
-    }
+2. Agrega las propiedades para realizar la conexión a la base de datos en el archivo `application.properties` del proyecto. 
 
-    @Override
-    public void close() {
-        //Nothing to do, this serializer does not need to release resources
-    }
-}
-```
-```java
-package org.bedu.postworksone.protos;
+3. Añade un nuevo paquete llamado entities, dentro del paquete persistence.
 
-import lombok.experimental.UtilityClass;
-import org.bedu.postworksone.documents.Doctor;
-import org.bedu.postworksone.protos.models.DoctorProto;
+4. Crea una copia de los objetos contenidos en el paquete model pero coloca las anotaciones de JPA en lugar de las validaciones.
 
-@UtilityClass
-public class DoctorProtoConverter {
-    public DoctorProto.Doctor from(Doctor doctor) {
-        DoctorProto.Doctor.Builder builder = DoctorProto.Doctor.newBuilder();
+5. Crea un repositorio para cada una de las entidades (recuerda que debe ser una interface que extienda de `JpaRepository`).
 
-        builder.setId(doctor.getId())
-                .setName(doctor.getName())
-                .setLastname(doctor.getLastname())
-                .setBirthday(doctor.getBirthday().toString())
-                .setSpecialized(doctor.isSpecialized())
-                .setYearsExperience(doctor.getYearsExperience());
+6. Agrega la dependencia de H2 a la aplicación y asegúrate de que puedes conectarte a esta.
 
-        if (doctor.isSpecialized() && !doctor.getSpeciality().isBlank()) {
-            builder.setSpeciality(doctor.getSpeciality());
-        }
+![imagen](img/img_01.png)
 
-        return builder.build();
-    }
-}
+7. Agrega una clase que implemente la interface `CommandLineRunner` de Spring para inicializar los catálogos de la aplicación.
 
-```
+![imagen](img/img_02.png)
 
-- Modificamos el archivo _application.properties_
-```bash
-spring.data.mongodb.uri=mongodb://localhost:27017/postwork_sesion_cinco
-logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG
-#Kafka
-spring.kafka.bootstrap-servers=localhost:9092
-spring.kafka.producer.value-serializer=org.bedu.postworksone.kafka.serializer.KafkaDoctorSerializer
-```
-- Y hacemos uso de DoctorServiceImpl para enviar el registro al servidor kafka
-```java
-package org.bedu.postworksone.servicesImpl;
-
-import lombok.RequiredArgsConstructor;
-import org.bedu.postworksone.documents.Doctor;
-import org.bedu.postworksone.repositories.DoctorRepository;
-import org.bedu.postworksone.services.DoctorService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-@Service("doctorServiceProtobuf")
-@RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class DoctorServiceImpl implements DoctorService {
-    private static final String TOPIC_NAME = "doctors";
-
-    private final DoctorRepository doctorRepository;
-    private final KafkaTemplate<String, Doctor> kafkaTemplate;
-
-    private String getDate() {
-        return LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
-    }
-
-    @Override
-    public Mono<Doctor> obtenerPorId(String id) {
-        return doctorRepository.findById(id);
-    }
-
-    @Override
-    public Flux<Doctor> obtenerTodos() {
-        return doctorRepository.findAll();
-    }
-
-    @Override
-    public Mono<Doctor> saveDoctor(Doctor doctor) {
-        return doctorRepository.save(doctor).map(d -> {
-            kafkaTemplate.send(TOPIC_NAME, getDate(), d);
-            return d;
-        });
-    }
-
-    @Override
-    public void delete(String id) {
-        doctorRepository.deleteById(id);
-    }
-
-    @Override
-    public Mono<Doctor> updateDoctor(Doctor doctor) {
-        return doctorRepository.save(doctor);
-    }
-}
-```
-
-**Nota** Debes iniciar el servidor Apache Kafka y crear el tópico como se hizo en los ejercicios
-
-### Contexto general
-
-El dueño del sistema desea tener el registro de todos los doctores dados de alta en un servidor de Apache Kafka, esto para alimentar otros sistemas que puede monetizar y necesitan estar actualizados.
-
-El servidor existe en localhost:9092 y tiene un tópico llamado _doctors_.
-
-### Resultado esperado
-
-Al finalizar este ejercicio se debe recibir la información de cada nuevo registro cuando se ejecuta el siguiente comando
-
-```bash
-    bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic doctors
-```
+![imagen](img/img_03.png)

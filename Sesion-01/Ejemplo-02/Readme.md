@@ -1,112 +1,86 @@
-## Ejemplo 2: 
+## Ejemplo: Creación de proyecto Maven con Spring Initializr
 
 ### Objetivo
-- Conectar una base de datos Mongo con Spring
-- Comprender la persistencia en Mongo desde Spring
-- Reafirmar conceptos de MongoDB desde Spring
+- Aprender la forma de crear un proyecto Maven usando Spring Initializr.
+- Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde la línea de comandos.
+- Ejecutar la aplicación desde la línea de comandos.
 
-### Requisitos
-- MongoDB instalado
-- JDK 8 o superior
-- IDE de tu preferencia
-- mongodb compass (Recomendado pero no necesario)
+#### Requisitos
+1. Tener instalado la última versión del JDK 11 (De Oracle u OpenJDK).
+2. Tener una conexión a Internet.
 
-### Desarrollo
-1. Se crea un proyecto Java con JDK 8 o superior.
-2. Se crea una Clase llamada `User` y se agrega la anotación `@Document(collection = "users")` (Esta anotación especifica que la clase será mapeada a un documento en Mongo, `collection = "users"` especifica el nombre del documento en caso que no se desee usar el nombre de la clase).
-3. Se agregan los atributos de la clase. El único atributo especial es `id`. Este debe ser de tipo String (corresponde al campo `ObjectId`) y debe ser anotado con `@Id` (De esta manera se especifica que esta propiedad será usada como identificador del documento).
-4. Para reducir codigo se utilizará la librería Lombok y las siguientes anotaciones :
-- `@AllArgsConstructor`: Crea Un constructor con todos los atributos (excepto los finales)
-- `@NoArgsConstructor`: Crera un constructor sin atributos (vacío)
-- `@Data`: Crea los `getters` y `setters` comunes en java además de sobre-escribir el método `equals` y `hashCode` de una manera común (para más info: https://projectlombok.org/features/all).
+#### Desarrollo
 
-El código quedaría de la siguiente manera:
+1. Entra al sitio de [Spring Initializr](https://start.spring.io/). Ahí verás una sola página dividida en dos secciones. Comienza llenando la información de la sección del lado izquierdo. Selecciona:
+  - Tipo de proyecto: **Maven Proyect**.
+  - Lenguaje: **Java**.
+  - Versión de Spring Boot, la versión estable más reciente (al momento de escribir esto la **2.3.5**)
+  - Grupo, artefacto y nombre del proyecto.
+  - Forma de empaquetar la aplicación: **jar**.
+  - Versión de Java: **11**.
 
-```java
-package org.bedu.ejemplo02.documents;
+![imagen](img/img_01.png)
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+2. En la sección de la derecha (las dependencias) presiona el botón `Add dependencies` y en la ventana que se abre busca la dependencia `Web` o `Spring Web`.
 
-import java.util.Date;
+![imagen](img/img_05.png)
 
-@Document(collection = "users")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-public class User {
+3. Selecciona la dependencia `Spring Web` y con eso debes verla en la lista de las dependencias del proyecto:
 
-    @Id
-    private String id;
+![imagen](img/img_06.png) 
 
-    private String username;
-    private String email;
-    private String Password;
-    private Date createdAt;
-    private Date updatedAt;
-}
-```
-5. Ahora, se creará el repositorio con el que se manejará la persistencia y las operaciones en BD de la entidad anterior:
-```java
-package org.bedu.ejemplo02.Repositories;
+4. Presiona el botón "GENERATE" (o presiona `Ctrl` + `Enter` en tu teclado) para que comience la descarga del proyecto.
 
-import org.bedu.ejemplo02.documents.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
+![imagen](img/img_03.png)
 
-public interface UserRepository extends MongoRepository<User, String> {
-}
-```
-Como se muestra, el código es realmente sencillo gracias a la interfáz `CrudRepository` de la cuál se heredan las operaciones básicas de un CRUD.
+5. Descomprime el archivo `zip` descargado, el cual tiene más o menos el siguiente contenido.
 
-6. Se Agrega la configuración en el archivo `application.properties` necesaria para establecer la conexión a la BD Mongo:
-```
-spring.data.mongodb.uri=mongodb://localhost:27017/ejemplo_dos
-```
-7. Para observar la persistencia en mongo desde Spring, se crearán algunos registros con el repositorio `UserRepository`, esto se puede hacer de varias maneras, pero quizá la manera más rápida es utilizando la clase la clase marcada como principal y la interfáz `CommandLineRunner`. Esta interfaz define un método llamado `run` que se ejecutará justo cuando inicia la aplicación y toma los parámetros de entrada del método main para realizar algo; Aunque en este caso, usaremos este método para borrar un documento y crear un registro en la base de datos de la siguiente manera:
+![imagen](img/img_07.png)
 
-```java
-package org.bedu.ejemplo02;
+6. Abre una terminal o línea de comandos en el directorio que acabas de descomprimir y ejecuta los siguientes comandos, los cuales se ejecutan en **Maven** gracias a un *wrapper* que se distribuye dentro del paquete que acabas de descargar (Nota: si es la primera vez que ejecutas Maven en tu computadora, el comando tardará un buen rato en ejecutarse, ya que debe descargar las librerías y paquetes necesarios):
 
-import org.bedu.ejemplo02.Repositories.UserRepository;
-import org.bedu.ejemplo02.documents.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.core.MongoTemplate;
+        mvnw clean package
+      
+7. La salida del comando anterior debe ser parecida a la siguiente:
 
-import java.util.Date;
-import java.util.logging.Logger;
+![imagen](img/img_08.png)
 
-@SpringBootApplication
-public class Ejemplo02Application implements CommandLineRunner {
+8. Una vez que todo está compilado, usa el siguiente comando para ejecutar la aplicación. 
 
-    private final Logger log = Logger.getLogger(this.getClass().getName());
+        mvnw spring-boot:run
+        
+9. Debes obtener una salida similar a la siguiente:
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private MongoTemplate mongoTemplate;
+![imagen](img/img_09.png)
 
-    public static void main(String[] args) {
-        SpringApplication.run(Ejemplo02Application.class, args);
-    }
+Esto indica que la aplicación se levantó correctamente en el puerto **8080**. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
 
-    @Override
-    public void run(String... args) throws Exception {
-        mongoTemplate.dropCollection("users");
+      http://localhost:8080
+      
+Una vez que el sitio cargue, debes ver una pantalla como la siguiente:
 
-        User user = new User(null, "rosaHdez", " rosa.hdez@email.com", "nosegura", new Date(), new Date());
-        user = userRepository.save(user);
-        log.info(user.toString());
-    }
-}
-```
-Notas:
-- Recordar que "users" es el nombre del documento (este se definió en la clase User).
-- `MongoTemplate` es una interfáz que define métodos muy útiles a nivel de base de datos. En este caso, como se muestra en la clase, se utilizó para eliminar el documento cada que la aplicación inicie (para consultar esta interfáz: https://docs.spring.io/spring-data/mongodb/docs/current/api/org/springframework/data/mongodb/core/MongoTemplate.html).
+![imagen](img/img_10.png)
 
-Si se ejecuta la aplicación, y se hace examina la BD (se recomienda mongodb compass) se notará que ahora se tiene una base de datos llamada "ejemplo_dos" (ya que este nombre se definió en el archivo `application.properties`) y de igual manera un documento llamado "users" (que es el que se creó con el repositorio).
+10. Detén la aplicación presionando `Ctrl + C` en la terminal en donde levantaste la aplicación.
+
+Puesto que la aplicación está completamente contenida en un archivo `jar`, también es posible ejecutarla de otra forma.
+
+11. Al compilar la aplicación con `mvnw package` se creó un directorio `target`. Navega a este directorio, el cual debe contener, entre otras cosas, un archivo `jar`.
+
+![imagen](img/img_11.png)
+
+12. Abre una terminal en este directorio y ejecuta el siguiente comando (cambia el nombre del jar si en tu caso es diferente):
+
+        java -jar sesion1.ejemplo2-0.0.1-SNAPSHOT.jar
+        
+13. Con esto nuevamente debes obtener una salida como la siguiente:
+
+![imagen](img/img_12.png)
+
+Nuevamente, esto indica que la aplicación se levantó correctamente en el puerto **8080**. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+
+      http://localhost:8080
+      
+Una vez que el sitio cargue, debes ver una pantalla como la siguiente:
+
+![imagen](img/img_13.png)

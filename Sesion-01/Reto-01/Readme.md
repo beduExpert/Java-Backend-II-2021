@@ -1,38 +1,71 @@
-## Reto 1: 
+## Reto: Creación de Proyecto Gradle con Spring Initializr
 
-### Objetivo
-- Comprobar conocimiento en sentencias Mongo
-- Aplicar conceptos teoricos y mejorar la comprensión del funcionamiento de MongoDB.
+## Objetivo
+- Crear un nuevo proyecto Spring Boot, usando Spring Initializr, sin ayuda del instructor.
+- Ejecutar una aplicación desde la línea de comandos, sin necesidad de instalar Gradle.
 
-### Requisitos
-- MongoDB instalado
-- mongodb compass (Recomendado pero no necesario)
+## Requisitos
+- Tener instalado la última versión del **JDK 11** (De Oracle u OpenJDK).
+- Tener acceso a la línea de comandos.
 
-### Desarrollo
+## Desarrollo
+Crear un proyecto de Spring Boot usando Spring Initializr con las siguientes características:
+- Herramienta de construcción: **Gradle**
+- Lenguaje de programación: **Java 11**
+- Versión de Spring Boot: la más actual que no sea un `SNAPSHOT` ni un `RC`.
 
-Teniendo en cuenta la siguiente colección llamada `empleados`:
+<details>
+	<summary>Solución</summary>
 
-```json
-{
-    "nombre": "Jorge",
-    "apellido": "Gonzales",
-    "personasACargo": [{
-        "nombre": "Aaron",
-        "apellido": "Sotelo",
-        "cargo": "Ing. en comp.",
-        "edad": 25,
-        "personasACargo": [{
-            "nombre": "Rosa",
-            "apellido": "Soto",
-            "edad": 30
-        }]
-    }],
-    "cargo": "Gerente de sistemas"
-}
-```
+1. Entra al sitio de [Spring Initializr](https://start.spring.io/). Comienza llenando la información de la sección del lado izquierdo.
+- **Gradle** Proyect
+- Lenguaje: **Java**.
+- Versión de Spring Boot, la versión estable más reciente (al momento de escribir esto la 2.3.5)
+- Grupo, artefacto y nombre del proyecto.
+- Forma de empaquetar la aplicación: **jar**.
+ - Versión de Java: **11**.
 
-1. Explicar por qué esta colección está correctamente estructurada teniendo en cuenta los campos `personasACargo` las dos veces que aparece y su estructura.
+![imagen](img/img_01.png)
 
-2. Escriba una consulta que inserte un documento con un `cargo: "Director comercial"` con al menos dos personas a cargo.
+2. En la sección de la derecha (las dependencias) presiona el botón `Add dependencies` y en la ventana que se abre busca la dependencia `Web` o `Spring Web`.
 
-3. Escriba una consulta que arroje las personas a cargo mayores de 30 años del gerente Jorge Gonzales.
+![imagen](img/img_02.png)
+
+3. Selecciona la dependencia `Spring Web` y con eso debes verla en la lista de las dependencias del proyecto:
+
+![imagen](img/img_03.png)
+
+4. Presiona el botón "GENERATE" (o presiona `Ctrl + Enter` en tu teclado) para que comience la descarga del proyecto.
+
+5. Descomprime el archivo zip descargado, el cual tiene más o menos el siguiente contenido.
+
+![imagen](img/img_04.png)
+
+6. Abre una terminal o línea de comandos en el directorio que acabas de descomprimir y ejecuta los siguientes comandos:
+
+       gradlew clean build
+
+La salida del comando anterior debe ser parecida a la siguiente:
+
+![imagen](img/img_05.png)
+
+7. Una vez que todo está compilado, usa el siguiente comando para ejecutar la aplicación.
+
+       gradlew bootRun
+
+o navega al directorio **build\libs**, abre una terminal en este directorio y ejecuta el siguiente comando (cambia el nombre del jar si en tu caso es diferente):
+
+    java -jar backend.sesion1-0.0.1-SNAPSHOT.jar
+    
+Esto indica que la aplicación se levantó correctamente en el puerto 8080. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+
+  http://localhost:8080
+
+Una vez que el sitio cargue, debes ver una pantalla como la siguiente:
+
+![imagen](img/img_06.png)
+
+8. Detén la aplicación presionando Ctrl + C en la terminal en donde levantaste la aplicación.
+  	
+</details> 
+

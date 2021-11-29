@@ -1,65 +1,140 @@
-## Ejemplo 02: Productor de Kafka con Java
+## Ejemplo 2: Inicialización de base de datos con CommandLineRunner y Lombok
 
 ### Objetivo
-1. Configurar un proyecto Java para que funcione como productor
+- Aprovechar la interface `CommandLineRunner` para ejecutar algunas tareas antes de que la aplicación comience a recibir peticiones.
+- Inicializar valores de catálogos en base de datos.
 
-### Procedimiento
-
-
-#### Crea el proyecto
-2. En [Spring Initializr](https://start.spring.io) crea un proyecto con las siguientes dependencias
-    * Spring Apache Kafka
-    * Lombok (opcional)
-3. Carga el proyeco en tu IDE
+#### Requisitos
+- Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
+- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
+#### Desarrollo
 
-#### Controlador
-4. Crea un controlador con los siguientes endpoints
+1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
+
+2. En la ventana que se abre selecciona las siguientes opciones:
+- Grupo, artefacto y nombre del proyecto.
+- Tipo de proyecto: **Maven Project**.
+- Lenguaje: **Java**.
+- Forma de empaquetar la aplicación: **jar**.
+- Versión de Java: **11**.
+
+3. En la siguiente ventana elige **Spring Web**, **Lombok**, **Spring Data JPA** y **MySQL Driver** como dependencia del proyecto.
+
+4. Dale un nombre y una ubicación al proyecto y presiona el botón *Finish*.
+
+5. En el proyecto que se acaba de crear debes tener el siguiente paquete `org.bedu.java.backend.sesion6.ejemplo2`. Dentro crea los subpaquetes: `runners`, `model` y `persistence`.
+
+6. Dentro del paquete `model` crea una clase llamada `Etapa` con los siguientes atributos:
 ```java
-@RestController
-@RequestMapping("/kafka")
-@RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class KafkaController {
-    private final KafkaProducer kafkaProducer;
-
-    @PostMapping("")
-    public void sendMessage(@RequestParam("msg") String message) {
-        kafkaProducer.sendMessage(message);
-    }
+    private Long etapaId;
+    private String nombre;
+    private Integer orden;
+```
+7. Decora la clase con la anotación `@Data` de *Lombok*:
+```java
+@Data
+public class Etapa {
 
 }
 ```
-#### Configuraciones
 
-**Nota** Se asume que se tiene en ejecución el servidor de kafka del Ejemplo 1, con el tópico bedu-msg
+8. Decora también la clase con las siguientes anotaciones de JPA:
+```java
+@Entity
+@Table(name = "ETAPAS")
+public class Etapa {
 
-5. Abre el archivo application.properties y agrega el siguiente valor
+}
 ```
-spring.kafka.bootstrap-servers: localhost:9092
+
+9. Decora los atributos con las siguientes de JPA:
+```java
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long etapaId;
+
+    @Column(nullable = false, length = 100)
+    private String nombre;
+
+    @Column(nullable = false, unique = true)
+    private Integer orden;
 ```
 
-#### Productor
-Con la configuración anterior, Spring Boot pone a nuestra disposición una instancia de la clase KafkaTemplate<String, String> que podemos inyectar en nuestras clases para publicar mensajes.
+10. En el paquete `persistence` crea una **interface** llamada `EtapaRepository` que extienda de `JpaRepository`. Esta interface permanecerá sin métodos:
+```java
+public interface EtapaRepository extends JpaRepository<Etapa, Long> {
 
-6. Crea una clase con el siguiente contenido
+}
+```
+
+11. En el paquete `runners` crea una nueva clase llamada `EtapasVentaRunner` que implemente la interface `CommandLineRunner`. Decora esta clase con la anotación `@Component` de Spring.
 
 ```java
 @Component
-@RequiredArgsConstructor(onConstructor_ = {@Autowired})
-public class KafkaProducer {
+public class EtapasVentaRunner implements CommandLineRunner {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
-
-    public void sendMessage(String message) {
-        kafkaTemplate.send("bedu-msg",LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) ,message);
+    @Override
+    public void run(String... args) throws Exception {
+    
     }
-
 }
 ```
-Estamos usando un timestamp como llave para el registro.
 
-Este método enviará el mensaje al servidor de kafka.
+12. Declara un atributo final de tipo `EtapaRepository` y decora la clase con `@RequiredArgsConstructor`:
+```java
+@RequiredArgsConstructor
+@Component
+public class EtapasVentaRunner implements CommandLineRunner {
 
-Puedes probar el funcionamiento iniciando el servidor y haciendo una petición HTTP a [POST] /kafka?msg=Hola%20Mundo
+    private final EtapaRepository etapaRepository;
 
+    @Override
+    public void run(String... args) throws Exception {
+    
+    }
+}
+```
+
+13. Dentro del método `run` crea un grupo de objetos de tipo `Etapa` y guárdalos en la base de datos usando la instancia de `etapaRepository`. Usaremos un método auxiliar para crear las instancias de `Etapa` debido a una limitación con Lombok que deberás resolver en el reto para poder usar un Builder.
+
+```java
+@RequiredArgsConstructor
+@Component
+public class EtapasVentaRunner implements CommandLineRunner {
+
+    private final EtapaRepository etapaRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+        Etapa etapa1 = creaEtapa("En espera", 0);
+        Etapa etapa2 = creaEtapa("Reunión de exploración", 1);
+        Etapa etapa3 = creaEtapa("Metas establecidas", 2);
+        Etapa etapa4 = creaEtapa("Plan de acción presentado.", 3);
+        Etapa etapa5 = creaEtapa("Contrato firmado", 4);
+        Etapa etapa6 = creaEtapa("Venta ganada", 5);
+        Etapa etapa7 = creaEtapa("Venta perdida", 6);
+
+        List<Etapa> etapas = Arrays.asList(etapa1, etapa2, etapa3, etapa4, etapa5, etapa6, etapa7);
+
+        etapaRepository.saveAll(etapas);
+    }
+
+    private Etapa creaEtapa(String nombre, Integer orden) {
+        Etapa etapa = new Etapa();
+        etapa.setNombre("En espera");
+        etapa.setOrden(orden);
+
+        return etapa;
+    }
+}
+```
+
+14. Ejecuta la aplicación. No debería haber ningún error en la consola y la aplicación debe iniciar de forma correcta.
+![imagen](img/img_01.png)
+
+15. La base de datos debe estar inicializada con las Etapas:
+
+![imagen](img/img_02.png)

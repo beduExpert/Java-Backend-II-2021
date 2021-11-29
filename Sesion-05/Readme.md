@@ -1,21 +1,21 @@
-## Sesión 5: Protocol Buffers
+# Sesión 5: Project Lombok y MapStruct
 
-### OBJETIVOS 
+## Objetivos
+- Aprender a usar Lombok como herramienta que genera código común (bolerplate) en objetos Java.
+- Aprender a usar MapStruct para mapear los atributos de un objeto con los de un objeto diferente.
+- Exponer los objetos creados con MapStruct como componentes de Spring.
 
-- Conocer qué es Protocol Buffers y su utilidad
-- Ventajas y desventajas de su uso
-- Estructuras de sus archivos de configuración
+## Organización de la clase
+- Introducción a Lombok
+  - [Ejemplo 1](Ejemplo-01)
+  - [Reto 1](Reto-01)
+
+- Introducción a MapStruct
+  - [Ejemplo 2](Ejemplo-02)
+  - [Reto 2](Reto-02)
+
+- Uso de Lombok y MapStruct con Spring Boot
+  - [Ejemplo 3](Ejemplo-03)
+ 
 
 
-#### ORGANIZACION DE LA CLASE 
-
-- Conocer la estructura de los archivos .proto y compilarlos
-	- [Ejemplo 01](Ejemplo-01)
-	- [Reto 01](Reto-01)
-
-- Protocol Buffers en una aplicación Java con Spring.
-	- [Ejemplo 02](Ejemplo-02)
-	- [Reto 02](Reto-02)
-
--  Comprender de manera visual la serialización y deserialización con Protocol Buffers y RestTemplate.
-	- [Ejemplo 03](Ejemplo-03)

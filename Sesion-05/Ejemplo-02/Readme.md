@@ -1,174 +1,158 @@
-## Ejemplo 2: Archivos .proto para la serialización en Protocol Buffers
+## Ejemplo 2: Uso de MapSctruct
 
 ### Objetivo
-- Conocer los archivos .proto para la serialización en Protocol Buffers
-- Relacionarse y conocer las características y funcionalidades de los archivos .proto
----
+- Crear una interfaz básica de MapStruct que permita mapear de un objeto `Cliente` a un objeto `ClienteDto` y viceversa.
 
-### Requisitos
-- JDK 8 (o superior)
----
+#### Requisitos
+- Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
+- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
 
-### Desarrollo
 
-1. Crear un proyecto `ejemplo02` con dependencia spring web y lombok.
+#### Desarrollo
 
-2. Crear un paquete `protos` sobre el paquete principal.
+1. Crea un proyecto **Maven** desde el IDE IntelliJ Idea. Este proyecto No deberá ser creado con Spring Initilizr.
 
-3. Agregar la siguiente dependencia de protocol buffers en el pom.xml:
+2. Agrega al proyecto, en el archivo **pom.xml** las dependencias de MapStruct:
 
+```xml
+<dependencies>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+            <optional>true</optional>
+        </dependency>
+</dependencies>
 ```
-<dependency>
-  <groupId>com.google.protobuf</groupId>
-  <artifactId>protobuf-java</artifactId>
-  <version>3.11.1</version>
-</dependency>
+4. En el caso de MapStruct también hay que agregar un plugin de Maven, el cual se encargará de generar el código para realizar el mapeo correspondiente.
+```xml
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 ```
-4. Crear un archivo proto `login.proto` dentro del paquete `protos` con la siguiente estructura:
 
-```
-syntax = "proto2";
 
-package org.bedu.ejemplo01.protos;
-
-option java_package = "org.bedu.ejemplo02.protos.models";
-option java_outer_classname = "LoginProto";
-
-message User {
-  required int32 id = 1;
-  required string name = 2;
-  required string email = 3;
-  required string password = 4;
+5. Crea un nuevo paquete llamado `org.bedu.java.backend.sesion5.ejemplo2` y adentro crea una clase llamada `Principal` que tenga un método `main` de la siguiente forma:
+```java
+public class Principal {
+    public static void main(String[] args) {
+        
+    }
 }
-
-enum Gender {
-    MALE = 0;
-    FEMALE = 1;
-  }
-
-message Student {
-    required int32 id = 1;
-    required User user = 2;
-    required int32 age = 3;
-    required float stature = 4;
-    optional bool certified = 5;
-    required Gender gender = 6;
-}
 ```
 
-5. Compilar el archivo `login.proto` del proyecto 1 (ruta: `05 Protocol Buffers\ejemplo02\src\main\java\org\bedu\ejemplo02\protos\login.proto`):
+6. Crea un subpaquete llamado `model` y adentro de este una clase llamada `Cliente` con los siguientes atributos:
+```java
+    private long id;
+    private String nombre;
+    private String correoContacto;
+    private int numeroEmpleados;
+    private String direccion;
+```
+Coloca también sus métodos *getter* y *setter*.
 
-```bash
-protoc --java_out="PATH\05 Protocol Buffers\ejemplo02\src\main\java" --proto_path="PATH\05 Protocol Buffers\ejemplo02\src\main\java" 'PATH\05 Protocol Buffers\ejemplo02\src\main\java\org\bedu\ejemplo02\protos\login.proto'
+7. Agrega, a la altura de `model` un paquete llamado `dtos`. Adentro de este agrega una clase llamada `ClienteDto` con los siguientes atributos:
+```java
+    private String nombre;
+    private String numeroEmpleados;
+    private String direccion;
+```
+No olvides colocar también sus métodos *getter* y *setter*.
+
+8. Dentro del paquete *dtos* agrega un subpquete llamado *mappings*.
+
+La estructura del proyecto hasta ahora debe verse así:
+
+![imagen](img/img_01.png)
+
+9. Dentro del paquete `mappings` crea una **interface** llamada `ClienteMapper` y decórala con la anotación `@@Mapper`:
+```java
+    @Mapper
+    public interface ClienteMapper {
+    
+    }
 ```
 
-Esto debería crear el paquete models dentro de protos. Con nuestra clase compilada.
-
-6. Crear una clase de configuración ProtoBufCondig en el paquete `protos.condif`:
+10. Agrega lis siguientes métodos dentro de la interface `ClienteMapper`, el primero le dice a MapStruct que debe crear un método que transforme de un `ClienteDto` (que recibe como parámetro) a un `Cliente` (que es el objeto que el método regresará). El segundo método hace lo opuesto, recibe un objeto `Cliente` y regresa un objeto `ClienteDto` con los atribtos mapeados provenientes del `Cliente`. MapStruct se encargará de crear una implementación de esta interface.
 
 ```java
-package org.bedu.ejemplo02.protos.config;
+    Cliente clienteDtoToCliente(ClienteDto clienteDto);
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.bedu.ejemplo02.protos.models.LoginProto;
-import org.bedu.ejemplo02.protos.models.LoginProto.User;
-import org.bedu.ejemplo02.protos.repository.VirtualUserRepository;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
-
-@Configuration
-public class ProtobufConfig {
-	
-	@Bean
-	ProtobufHttpMessageConverter protobufHttpMessageConverter() {
-		return new ProtobufHttpMessageConverter();
-	}
-
-	private LoginProto.User newUser(int id, String nombre, String email, String password) {
-
-		return LoginProto.User.newBuilder()
-			.setId(id)
-			.setName(nombre)
-			.setEmail(email)
-			.setPassword(password)
-		.build();
-	}
-
-	@Bean
-	public VirtualUserRepository createUsers() {
-		Map<Integer, User> users = new HashMap<>();
-		
-		User user = newUser(1, "Hernan", "hernan.123@mail.com", "nosegura");
-		users.put(user.getId(), user);
-		
-		user = newUser(2, "Mary", "mary.ros@email.com", "pass");
-		users.put(user.getId(), user);
-		
-		user = newUser(3, "Jose", "jos.091@email.com", "contras23");
-		users.put(user.getId(), user);
-		
-		return new VirtualUserRepository(users);
-	}
-}
-
+    ClienteDto clienteToClienteDto(Cliente cliente);
 ```
 
-7. Crear una clase `VirtualUserRepository` que fungirá como repositorio en el paquete `protos.repository`:
+La interface completa debe verse de esta forma:
 
 ```java
-package org.bedu.ejemplo02.protos.repository;
+@Mapper
+public interface ClienteMapper {
+    Cliente clienteDtoToCliente(ClienteDto clienteDto);
 
-import java.util.Map;
-
-import org.bedu.ejemplo02.protos.models.LoginProto.User;
-
-public class VirtualUserRepository {
-	private Map<Integer, User> users;
-
-	public VirtualUserRepository(Map<Integer, User> users) {
-		this.users = users;
-	}
-
-	public User getUser(int id) {
-		return users.get(id);
-	}
+    ClienteDto clienteToClienteDto(Cliente cliente);
 }
-
 ```
 
-8. Crear un controlador `UserController` en el paquete `protos.controllers`:
+11. En el método `main` crea una una instancia de `ClienteDto` colocando valores en sus atributos y luego crea una instancia de la clase que implementa la interface `ClienteMapper` y que es creada por MapStruct. Por default esta clase tendrá el mismo nombre que nuestra interface, agregando `Impl` al final:
 
 ```java
-package org.bedu.ejemplo02.protos.controllers;
+        ClienteDto clienteDto = new ClienteDto();
+        clienteDto.setDireccion("Direccion DTO");
+        clienteDto.setNombre("Nombre cliente dto");
+        clienteDto.setNumeroEmpleados("10");
 
-import org.bedu.ejemplo02.protos.models.LoginProto;
-import org.bedu.ejemplo02.protos.repository.VirtualUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class UserController {
-
-	@Autowired
-	private VirtualUserRepository userRepository;
-
-	@RequestMapping("/user/{id}")
-	LoginProto.User user(@PathVariable Integer id) {
-		return this.userRepository.getUser(id);
-	}
-}
+        ClienteMapper clienteMapper = new ClienteMapperImpl();
 ```
 
-9. Ejecutar la aplicación, si todo está correcto debería ejecutarse sin problemas.
+12. Usando esta instancia usa el método `clienteDtoToCliente` e imprime los valores de los atibutos del objeto `Cliente` obtenido:
+```java
+        Cliente clienteMapeado = clienteMapper.clienteDtoToCliente(clienteDto);
 
-10. (Opcional) si se tiene postman CURL o desde el navegador (descargar archivo serializado), se puede hacer la petición a la url del controlador:
-`http://localhost:8080/user/1` y observar la respuesta (Debería estar serializada):
+        System.out.printf("Cliente, dirección: %s%n", clienteMapeado.getDireccion());
+        System.out.printf("Cliente nombre %s%n", clienteMapeado.getNombre());
+        System.out.printf("Cliente numero empleados %d%n%n", clienteMapeado.getNumeroEmpleados());
 
 ```
-Marymary.ros@email.com"pass
+
+En la consola de salida debe haber un mensaje similar al siguiente:
+
+![imagen](img/img_02.png)
+
+13. Has lo mismo pero ahora creando una instancia de `Cliente` e imprimiendo los valores del objeto `ClienteDto` mapeado:
+```java
+        Cliente cliente = new Cliente();
+        cliente.setId(1L);
+        cliente.setCorreoContacto("correo@cliente.com");
+        cliente.setDireccion("Dirección cliente");
+        cliente.setNombre("Nombre cliente");
+        cliente.setNumeroEmpleados(10);
+
+        ClienteDto clienteDtoMapeado = clienteMapper.clienteToClienteDto(cliente);
+        System.out.printf("ClienteDto, dirección: %s%n", clienteDtoMapeado.getDireccion());
+        System.out.printf("ClienteDto nombre %s%n", clienteDtoMapeado.getNombre());
+        System.out.printf("ClienteDto numero empleados %s%n", clienteDtoMapeado.getNumeroEmpleados());
 ```
+
+![imagen](img/img_03.png)

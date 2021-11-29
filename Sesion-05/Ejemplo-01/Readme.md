@@ -1,77 +1,100 @@
-## Ejemplo 1: 
+## Ejemplo 1: Creación de getters, setters, constructores, equals y hashcode con @Data
 
 ### Objetivo
-- Conocer los archivos .proto para la serialización en Protocol Buffers
-- Relacionarse y conocer las características y funcionalidades de los archivos .proto
----
+- Usar las anotaciones básicas de Lombok para la generación de getters, setters, constructores, equals y hashcode.
 
-### Requisitos
-- JDK 8 (o superior)
----
+#### Requisitos
+- Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
+- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la herramienta Postman.
 
-### Desarrollo
-1. [Descargar](https://github.com/protocolbuffers/protobuf/releases/tag/v3.11.1) protoc (compilador proto) según sea su sistema operativo.
-2. Agregar al las variables del sistema protoc (Si se desea no ejecutar desde la misma carpeta y especificar la carpeta origen, aunque este paso no es 100% necesario):
 
-* windows
-![Agregar variable de sistema](img/agregar_variable.png)
+#### Desarrollo
 
-* linux:
+1. Crea un proyecto **Maven** desde el IDE IntelliJ Idea. Este proyecto No deberá ser creado con Spring Initilizr.
+
+2. Agrega al proyecto, en el archivo **pom.xml** la dependencia de Lombok 
+
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.16</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 ```
-export PATH="/path/to/proto:$PATH"
-~/.bashrc
-```
-
-3. Verificar proto en un powershell/cmd/terminal:
-
-Ejecutar la instrucción: `protoc --version`. 
-
-Esto debería devolver: `libprotoc 3.11.1`
-
-4. Crear un Archivo llamado `user.proto` con la siguiente estructura:
-
-```
-syntax = "proto2";
-
-package org.bedu.ejemplo01.protos;
-
-option java_package = "org.bedu.ejemplo01.protos.models";
-option java_outer_classname = "UserProto";
-
-message User {
-  required string name = 1;
-  required int32 id = 2;
-  required string email = 3;
-  required string password = 4;
-
-  enum Gender {
-    MALE = 0;
-    FEMALE = 1;
-  }
-    
+3. Crea un nuevo paquete llamado `org.bedu.java.backend.sesion5.ejemplo1` y adentro crea una clase llamada `Principal` que tenga un método `main` de la siguiente forma:
+```java
+public class Principal {
+    public static void main(String[] args) {
+        
+    }
 }
 ```
 
-* la primera línea especifica la sintaxis del archivo (versión 2 o 3 de proto).
-* La segunda especifica el paquete para evitar conflictos entre proyectos (hablando de los archivos proto).
-* seguido, `option java_package` especifica en cuál paquete irán las clases generadas.
-* `option java_outer_classname` define la clase que contiene todos los mensajes y declaraciones de este archivo `proto` (Esta será la clase compilada).
-* Los valores (marcadores) asignados a los campos, son en realidad un tag que los campos utilizan en la codificación binaria. Del 1-15 requieren un byte menos para codificarse (contra valores mayores). Esto es útil en temas de optimización.
+4. Crea un subpaquete llamado `model` y adentro de este una clase llamada `Venta`; la estructura de la aplicacion hasta ahora debe verse así:
 
-5. Mover este archivo a un paquete lamado `protos`.
+![imagen](img/img_01.png)
 
-Ejecutar:
-
-```bash
- protoc --java_out="origen_codigo_java" --proto_path="path_destino_clases_generadas" 'path_de_archivo.proto'
+5. En la clase `Visita` coloca los siguientes atributos, en donde dos de los atributos estan marcados como `final`:
+```java
+    private long id;
+    private final LocalDateTime fechaProgramada;
+    private String direccion;
+    private String proposito;
+    private final String vendedor;
 ```
 
-Por ejemplo, dado la estructura del proyecto y suponiendo que el está en el escritorio, la compilación se realizaría de la siguiente manera:
+6. Decora la clase `Visita` con la anotación `@Data`, la cual le dice a **Lombok** que debe generar una serie de métodos, entre los que se encuentran:
+- *getter*s de todos los atributos
+- *setter*s de todos los atributos que no sean `final`
+- `equals`, `hashcode` y `toString`
+- Constructor con todos los atributos final
 
-```bash
-protoc --java_out="C:\Users\mi-usuario\Desktop\05 Protocol Buffers\ejemplo01\ejemplo01\src\main\java" --proto_path="C:\Users\mi-usuario\Desktop\05 Protocol Buffers\ejemplo01\ejemplo01\src\main\java" 'C:\Users\mi-usuario\Desktop\05 Protocol Buffers\ejemplo01\ejemplo01\src\main\java\org\bedu\ejemplo01\protos\user.proto'
+```java
+@Data
+public class Visita {
+    private long id;
+    private final LocalDateTime fechaProgramada;
+    private String direccion;
+    private String proposito;
+    private final String vendedor;
+}
 ```
 
-Notar que cada directorio es separado por un espacio.
+7. Decora la clase con la anotación `@Builder`, la cual indica a Lombok que debe implementar el patrón **builder** en esta clase, así que automáticamente agregará todos los elementos necesarios, incluyendo un método `build`, que será el que usaremos para obtener una instancia del objeto `VistaBuilder`, el cual también generado automáticamente por Lombok.
 
-Si se observa el resultado, ahora existe un paquete `models.protos` y este contiene la clase compilada `UserProto.java` (Tal y como lo especificamos en el archivo .proto)
+```java
+@Data
+@Builder
+public class Visita {
+    private long id;
+    private final LocalDateTime fechaProgramada;
+    private String direccion;
+    private String proposito;
+    private final String vendedor;
+}
+```
+
+8. Revisa el panel de estructura de la clase en IntelliJ en donde se muestran los metodos generádos por IntelliJ:
+
+![imagen](img/img_03.png)
+
+9. En el método `main` crea una nueva inastancia de `Vista`, usando su builder, e imprime sus valores en la consola:
+```java
+    public static void main(String[] args) {
+        Visita visita = Visita.builder().proposito("Presentar los nuevos productos")
+                .direccion("Oficina del cliente")
+                .fechaProgramada(LocalDateTime.now().plusDays(3))
+                .vendedor("Juan Manuel")
+        .build();
+
+        System.out.printf("Datos de la visita: %s%n", visita);
+    }
+```
+
+10. Ejecuta la aplicación, debes obtener un resultado como el siguiente:
+
+![imagen](img/img_04.png)

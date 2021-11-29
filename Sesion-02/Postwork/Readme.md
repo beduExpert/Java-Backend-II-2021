@@ -1,62 +1,72 @@
-## Postwork Sesión 02:
+## Postwork Sesión 02
 
-A lo largo de este proyecto reafirmaremos lo que se ha aprendido durante las sesiones.
+### Objetivo
+- Crear una serie de modelos que representarán la información que es manejada por el CRM.
+- Crear la estructura de los servicios que permitirán implementar las diferentes funcionalidades del CRM.
+- Crear los paquetes que representarán cada una de las capas de la aplicación.
 
-### Módulo 2 - Consumo REST-SOAP
 
-Continuamos con el postwork de la sesion 1
+#### Desarrollo   
 
-Ahora lo que haremos es consumir un servicio para llenar el documento de Pacientes (Patient). Entramos a la siguiente URL https://www.mocky.io/ ,en la cual agregaremos el siguiente cuerpo:
+1. Crea los siguientes paquetes en el proyecto principal:
+    - *model*
+    - *controllers*
+    - *persistence*
+    - *services*
+2. Crea dentro de paquete "`model`" las siguientes clases:
+    - *Cliente*
+    - *Visita*
+    - *Producto*
+    - *Venta*
+    - *Etapa*
 
-```json
+Estas clases están vacías por el momento (no tendrán atributos)
 
-[
-    {
-        "name": "Alfredo",
-        "lastname": "Hernandez",
-        "birthday": "1990-02-15",
-        "stature": 173,
-        "weigth": 72
-    },
-    {
-        "name": "Luis",
-        "lastname": "Hernandez",
-        "birthday": "1990-02-15",
-        "stature": 183,
-        "weigth": 82
-    },
-    {
-        "name": "David",
-        "lastname": "Hernandez",
-        "birthday": "1990-02-15",
-        "stature": 163,
-        "weigth": 65
-    },
-    {
-        "name": "Anabel",
-        "lastname": "Hernandez",
-        "birthday": "1990-02-15",
-        "stature": 163,
-        "weigth": 60
-    },
-    {
-        "name": "Viridiana",
-        "lastname": "Hernandez",
-        "birthday": "1990-02-15",
-        "stature": 173,
-        "weigth": 72
-    },
-    {
-        "name": "Carolina",
-        "lastname": "Hernandez",
-        "birthday": "1990-02-15",
-        "stature": 180,
-        "weigth": 75
+3. Crea dentro del paquete "`controllers`" las siguientes clases y decóralas con la anotación "`@RestController`".
+    - *ClienteController*
+    - *ProductoController*
+    - *VisitaController*
+    - *VentaController*
+    - *EtapaController*
+    
+4. Dentro de cada uno de los servicios coloca métodos que permitan crear, leer, actualizar y eliminar recursos (objetos del paquete `model`). Para ello tendrás que usar los métodos HTTP: **GET**, **POST**, **PUT** y **DELETE**.
+
+Tus servicios deben seguir este patrón:
+
+```java
+@RestController
+@RequestMapping("/cliente")
+public class ClienteController {
+
+    @GetMapping("/{clienteId}")
+    public ResponseEntity<Cliente> getCliente(@PathVariable Long clienteId){
+
     }
 
-]
-```
-Damos click en Generate my HTTP Response y arriba nos aparecera el link que ocuparemos.
+    @GetMapping
+    public ResponseEntity <List<Cliente>> getClientes(){
 
-Deberan crear un servicio que haga el trabajo del mapping y guardado de los pacientes que devuelve el JSON, llamar el metodo en su clase principal (metodo run) 
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> creaCliente(@RequestBody Cliente cliente){
+
+    }
+
+    @PutMapping("/{clienteId}")
+    public ResponseEntity<Void> actualizaCliente(@PathVariable Long clienteId, @RequestBody Cliente cliente){
+
+    }
+
+    @DeleteMapping("/{clienteId}")
+    public ResponseEntity<Void> eliminaCliente(@PathVariable Long clienteId){
+
+    }
+}
+```
+
+
+La estructura de tu proyecto debe quedar de la siguiente forma:
+
+![imagen](img/img_01.png)
 

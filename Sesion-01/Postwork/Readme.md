@@ -1,77 +1,24 @@
-## Postwok Sesión 1: 
+## Postwork Sesión 01
 
 ### Objetivo
+Crear la estructura de tu proyecto personal, el cual implementará las funciones básicas de un sistema para **CRM** (*Customer Relationship Management*), el cual es un software de apoyo a la gestión de las relaciones con los clientes, a la venta y al marketing.
 
-- Afirmar conocimientos de `Bases de datos no relacionales`
-- Afirmar conocimientos MongoDB
-- Afirmar conocimientos Spring Data MongoDB
+En este primer Postwork crearás el proyecto *Maven* desde IntelliJ Idea que servirá para implementar, a lo largo de resto de las sesiones, la estructura básica del CRM.
 
-### Requisitos
+#### Desarrollo   
+- Crea un nuevo proyecto Maven desde IntelliJ Idea.
+- Selecciona Spring Initializr como tipo de proyecto.
+- Selecciona las siguientes opciones para tu proyecto:
+    - Herramienta de construcción: **Maven**
+    - Lenguaje de programación: **Java 11**
+    - Versión de Spring Boot: la más actual que no sea un `SNAPSHOT` ni un `RC`.
+- Agrega `Spring Web` como dependencia de tu proyecto.
+- Genera el proyecto en tu IDE y ejecútalo para asegurarte de que todo está configurado correctamente.
 
-- MongoDB instalado
-- mongodb compass (Recomendado pero no necesario)
-- DJK8+
-- IDE de preferencia (Se recomienda IntelliJ o STS4 )
+**-Nota:** También puedes generar tu proyecto desde el sitio de [Spring Initializr](https://start.spring.io/), descargarlo en tu computadora e importarlo en IntelliJ Idea desde el menú `File -> New -> Project from Existing Sources`:
 
-### Desarrollo
+![imagen](img/img_01.png)
 
-Un hospital requiere un pequeño sistema para generar recetas. Por ahora solo se requiere que estas se guarden, pero posteriormente se piensa generar un módulo de reportes.
+El resultado final debe ser una página similar a la siguiente, la cual debe verse en tu navegador al entrar a la dirección [http://localhost:8080](http://localhost:8080)
 
-Analice con cuidado el siguiente Documento Mongo correspondiente a  una receta (documento llamado `prescription` ) expedida por un médico, cree las entidades (documentos) y repositorios con Spring Data MongoDB para poder replicarla (los _id pueden cambiar por obvias razones), intente hacer algunas validaciones en los documentos (`javax.validation.constraints`) de acuerdo a reglas de negocio que usted crea convenientes:
-
-```json
-{
-    "_id": "5dfa9c2afcdb5c43fe9394c5",
-    "doctor": {
-        "_id": "5dfa9c2afcdb5c43fe9394c0",
-        "name": "Diana Laura",
-        "lastname": "García",
-        "birthday": "1995-09-12T06:00:00.000Z",
-        "specialized": false,
-        "yearsExperience": 1
-    },
-    "patient": {
-        "_id": "5dfa9c2afcdb5c43fe9394c1",
-        "name": "Alfredo",
-        "lastname": "Hernandez",
-        "birthday": "1990-02-15T06:00:00.000Z",
-        "stature": 163,
-        "weigth": 172
-    },
-    "createdAt": "2019-12-18T21:37:46.808Z",
-    "diseases": [
-        {
-            "_id": "5dfa9c2afcdb5c43fe9394c2",
-            "name": "Flu",
-            "causes": [
-                "Human contact"
-            ],
-            "symptoms": [
-                "cough",
-                "distemper"
-            ],
-            "signs": [
-                "distemper",
-                "redness of the area around the eyes"
-            ]
-        }
-    ],
-    "medicationDetails": [
-        {
-            "_id": "5dfa9c2afcdb5c43fe9394c4",
-            "medicament": {
-                "_id": "5dfa9c2afcdb5c43fe9394c3",
-                "name": "paracetamol",
-                "quantity": "100 mg =1ml = 25 drops",
-                "expirationDate": "2025-02-10T06:00:00.000Z"
-            },
-            "Days": 7,
-            "timeIntervals": 8,
-            "quantity": "5 drops"
-        }
-    ],
-    "_class": "org.bedu.postworksone.documents.Prescription"
-}
-```
-
-2. Replique el documento anterior desde Spring (Puede utilizar pruebas unitarias o la interfaz `CommandLineRunner`)
+![imagen](img/img_02.png)

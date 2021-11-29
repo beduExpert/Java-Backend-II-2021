@@ -1,25 +1,20 @@
-## Postwork sesión 07: 
+## Postwork Sesión 7
 
 ### Objetivo
-- Verificar conocimientos
+- Tener un entendimiento básico de qué es una prueba unitaria.
+- Aplicar pruebas unitarias en Spring Boot usando los objetos proporcionados por Spring Test.
 
-### Contexto general
 
-Se ha comenzado el intercambio de datos entre los distintos sistemas, todo parecía funcionar sin problemas sin embargo, hoy por la mañana se recibió una llamada comentando que había problemas.
+#### Desarrollo   
+1. Termina la implementación de los métodos de negocio, que se encuentran en la capa services de la aplicación, para tener las funcionalidades básicas de guardado, eliminación, bajas y actualizaciones de cada uno de los tipos de entidad.
 
-De forma general, el sistema consta de tres módulos:
+2. Para el paso anterior será necesario implementar las funcionalidades en todas las capas de la aplicación, desde los controladores hasta los repositorios para el manejo de los datos almacenados.
 
-1. Aplicación móvil
-2. Página web
-3. Backend (El que se está desarrollando en los postworks)
+3. Agrega pruebas unitarias de cada uno de los métodos existentes en los controladores usando el objeto MockMvc de Spring
 
-También se comenta que justamente ayer, un técnico externo proporcionó una herramienta para cargar archivos excel de médicos y automáticamente mandarlos por la página web (esta herramienta no afecta el sistema, es completamente externa), lo cuál facilitó mucho trabajo manual (se enviaron muchísimos registros). Y se comprobó que todo funcionara bien al final.
+4. Implementa una serie de pruebas integrales usando el objeto TestRestTemplate proporcionado por Spring. Recuerda que este objeto ejecuta la aplicación, por lo tanto modificará la información existente en tu base de datos.
 
-Posteriormente se confirma que está fallando tanto la aplicación móvil como la página web. Comentan que en ambos casos unicamente se muestra un mensaje que dice "Oops, ha ocurrido algo de nuestro lado, intente más tarde."
+5. Asegúrate que al final todas las pruebas se ejecuten de forma correcta:
 
-Te comentaron:
-> Hoy se comenzó a subir datos igual que ayer y de pronto apareció el mensaje
 
-- ¿Cuál puede ser el problema?
-- ¿Cómo podrías verificar el problema?
-- ¿Cómo se soluciona el problema?
+![imagen](img/img_01.png)

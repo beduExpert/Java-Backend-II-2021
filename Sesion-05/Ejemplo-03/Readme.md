@@ -1,96 +1,234 @@
-## Ejemplo 3: 
+## Ejemplo 3: Uso de Lombok y MapSctruct con Spring Boot
 
 ### Objetivo
-- Comprobar la serialización/deserialización protocol buffers desde Spring Boot
+- Crear una interfaz básica de MapStruct que permita mapear de un objeto `Cliente` a un objeto `ClienteDto` y viceversa.
+- Decorar las clases anteriores con las anotaciones de Lombok para autogenerar sus métodos *setter*, *getter*, constructores, etc.
+- Hacer que Spring inyecte de forma automática el objeto *Mapper* creado por MapStruct en los controladores usando las anotaciones de Lombok.
 
-### requicitos
-- Reto 2
-- JDK 8+
+#### Requisitos
+- Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
+- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
 
-### desarrollo
 
-1. Crea un test `SerializationTest` con la siguiente estructura:
+#### Desarrollo
 
-```java
-package org.bedu.ejemplo03;
+1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 
-import static org.assertj.core.api.Assertions.assertThat;
+2. En la ventana que se abre selecciona las siguientes opciones:
+- Grupo, artefacto y nombre del proyecto.
+- Tipo de proyecto: **Maven Project**.
+- Lenguaje: **Java**.
+- Forma de empaquetar la aplicación: **jar**.
+- Versión de Java: **11**.
 
-import org.bedu.ejemplo03.protos.models.LoginProto.Student;
-import org.bedu.ejemplo03.protos.models.LoginProto.User;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.client.RestTemplate;
+3. En la siguiente ventana elige **Spring Web** y **Lombok** como dependencia del proyecto.
 
-@SpringBootTest
-@WebAppConfiguration
-class SerializationTest {
+4. Dale un nombre y una ubicación al proyecto y presiona el botón *Finish*.
 
-	private static final String USER_URL = "http://localhost:8080/user/2";
-	private static final String STUDENT_URL = "http://localhost:8080/student/1";
+5. En el proyecto que se acaba de crear debes tener el siguiente paquete `org.bedu.java.backend.sesion5.ejemplo3`. Dentro crea los subpaquetes: `model`, `dtos`  y `controllers`. Dentro del paquete `dtos` crea un subpaquete `mappings`.
 
-	@Autowired
-	private RestTemplate restTemplate;
+6. Agrega al proyecto, en el archivo **pom.xml** las dependencias de MapStruct (las de Lombok se agregaron al momento de crear el proyecto):
 
-	@Test
-	public void getUser() {
-		ResponseEntity<User> user = restTemplate.getForEntity(USER_URL, User.class);
-		System.out.println(String.format("\n%s \n", user.getBody()));
-		assertThat(user).isNotNull();
-	}
-	
-	@Test
-	public void getStudent() {
-		ResponseEntity<Student> student = restTemplate.getForEntity(STUDENT_URL, Student.class);
-		System.out.println(String.format("\n%s \n", student.getBody()));
-		assertThat(student).isNotNull();
-	}
-	
-	@Test
-	public void getUserOfStudent() {
-		ResponseEntity<Student> student = restTemplate.getForEntity(STUDENT_URL, Student.class);
-		System.out.println(String.format("\n%s \n", student.getBody()));
-		assertThat(student.getBody().getUser().getEmail()).isNotEmpty();
-	}
+```xml
+<properties>
+    <java.version>11</java.version>
+    <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+</properties>
 
-}
 
+<dependencies>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+            <optional>true</optional>
+        </dependency>
+</dependencies>
 ```
 
-Como se muestra, se está haciendo uso de un RestTemplate para obtener los datos, se anexa una impresión de todos los datos en el System.out.println para que se observen todos los datos deserializados. 
-Posteriormente se hacen las pruebas correspondientes.
-
-2. Crea un Bean de configuración en el paquete de configuración con la siguiente estructura:
-
-```java
-package org.bedu.ejemplo03.protos.config;
-
-import java.util.Arrays;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-@Configuration
-public class RestTemplateProtocolBufConfig {
-	
-	@Bean
-	public RestTemplate restTemplate(ProtobufHttpMessageConverter hmc) {
-	    return new RestTemplate(Arrays.asList(hmc));
-	}
-}
-
+7. Agrega el plugin de Maven para MapStruct, el cual se encargará de generar el código para realizar el mapeo correspondiente.
+```xml
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.16</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.1.0</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 ```
 
-Esta marcada con la anotación `@Configuration` proporciona el Bean que se utiliza en los test. Como se muestra utiliza una clase `ProtobufHttpMessageConverter` que es la encargada de realizar el `parseo` de los datos.
+8. Dentro del paquete `model` crea una clase llamada `Cliente` con los siguientes atributos:
+```java
+    private long id;
+    private String nombre;
+    private String correoContacto;
+    private int numeroEmpleados;
+    private String direccion;
+```
+9. Decora esta clase con las anotaciones `@Data` y `@Builder` de Lombok:
+```java
+@Data
+@Builder
+public class Cliente {
+    private long id;
+    private String nombre;
+    private String correoContacto;
+    private int numeroEmpleados;
+    private String direccion;
+}
+```
 
+10. Dentro del paquete `dtos` agrega una clase llamada `ClienteDto` con los siguientes atributos. También anota esta clase con `@Data` y `@Builder`:
+```java
+@Data
+@Builder
+public class ClienteDto {
+    private String nombre;
+    private String numeroEmpleados;
+    private String direccion;
+}
+```
 
-3. Ejecuta la aplicación.
+11. Dentro del paquete `mappings` crea una **interface** llamada `ClienteMapper` y decórala con la anotación `@Mapper`:
+```java
+    @Mapper
+    public interface ClienteMapper {
+    
+    }
+```
 
-4. Ejecuta los test (corriendo la app). Si todo está correcto, los test de serialización deberían pasar.
+12. En la anotación `@Mapper` agrega el atributo `componentModel` con el valor de `spring`. Esto le indica a MapStruct que debe marcar la clase generada para que pueda funcionar como un componente de Spring.
+```java
+@Mapper(componentModel = "spring")
+public interface ClienteMapper {
 
-5. Analiza los resultados.
+}
+```
+
+12. Agrega los siguientes métodos dentro de la interface `ClienteMapper`, el primero le dice a MapStruct que debe crear un método que transforme de un `ClienteDto` (que recibe como parámetro) a un `Cliente` (que es el objeto que el método regresará). El segundo método hace lo opuesto, recibe un objeto `Cliente` y regresa un objeto `ClienteDto` con los atribtos mapeados provenientes del `Cliente`. MapStruct se encargará de crear una implementación de esta interface.
+
+```java
+    Cliente clienteDtoToCliente(ClienteDto clienteDto);
+
+    ClienteDto clienteToClienteDto(Cliente cliente);
+```
+
+La interface completa debe verse de esta forma:
+
+```java
+@Mapper(componentModel = "spring")
+public interface ClienteMapper {
+    Cliente clienteDtoToCliente(ClienteDto clienteDto);
+
+    ClienteDto clienteToClienteDto(Cliente cliente);
+}
+```
+
+13. En el paquete `controllers` agrega una clase llamada `ClienteController` y decórala con la anotación `@RestController`:
+
+```java
+@RestController
+@RequestMapping("/cliente")
+public class ClienteController {
+
+}
+```
+
+14. Agrega un nuevo manejador de peticiones **POST** que reciba un identificador como parámetro Un objeto de tipo `Cliente`:
+```java
+
+    @PostMapping
+    public ResponseEntity<Void> creaCliente(@RequestBody Cliente cliente){
+
+        return ResponseEntity.created(URI.create("1")).build();
+    }
+```
+
+15. Declara una instancia de tipo `ClienteMapper` en el controlador y úsala dentro del método `creaCliente` para obtener un objeto de tipo `ClienteDto` con los valores del objeto `Cliente` recibido e imprime sus valores en consola:
+```java
+@RestController
+@RequestMapping("/cliente")
+public class ClienteController {
+
+    private final ClienteMapper mapper;
+
+    @PostMapping
+    public ResponseEntity<Void> creaCliente(@RequestBody Cliente cliente){
+
+        ClienteDto clienteDto = mapper.clienteToClienteDto(cliente);
+
+        System.out.println(clienteDto);
+
+        return ResponseEntity.created(URI.create("1")).build();
+    }
+
+}
+```
+
+16. Agrega al nivel de la clase la anotación `@RequiredArgsConstructor` de Lombok para crear un constructor que reciba los atributos marcados como `final`, en este caso el el objeto `ClienteMapper`. Al final la clase debe quedar de esta forma:
+```java
+@RestController
+@RequestMapping("/cliente")
+@RequiredArgsConstructor
+public class ClienteController {
+
+    private final ClienteMapper mapper;
+
+    @PostMapping
+    public ResponseEntity<Void> creaCliente(@RequestBody Cliente cliente){
+
+        ClienteDto clienteDto = mapper.clienteToClienteDto(cliente);
+
+        System.out.println(clienteDto);
+
+        return ResponseEntity.created(URI.create("1")).build();
+    }
+
+}
+```
+
+17. Ejecuta la aplicación y envía el siguiente objeto JSon desde Postman:
+```json
+{
+    "nombre": "BeduORG",
+    "correoContacto": "contacto@bedu.org",
+    "numeroEmpleados": "20",
+    "direccion": "direccion"
+}
+```
+
+18. Debes recibir la siguiente respuesta en Postman:
+
+![imagen](img/img_02.png)
+
+y debes tener el siguiente mensaje en la consola de IntelliJ:
+
+![imagen](img/img_03.png)

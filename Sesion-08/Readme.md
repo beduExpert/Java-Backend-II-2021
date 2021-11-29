@@ -1,26 +1,19 @@
+# Sesión 8: Spring MVC RestDoc
 
-## Sesión 08: Deploy
+## Objetivos
+- Aprender a generar documentación de servicios, basada en las pruebas unitarias de una aplicación 
+- Aprender la forma de personalizar la documentación generada con RestDoc
+- Distribuir la documentación de los servicios para ser consumida por otro desarrollador.
 
-### OBJETIVOS 
+## Organización de la clase
 
-- Conocer el proceso para realizar el despliegue de una aplicación desarrollada con Spring Boot a un ambiente productivo
-- Realizar el despliegue mediante un archivo JAR
-- Realizar el despliegue mediante un archivo WAR
-- Realizar el despliegue mediante un contenedor de Docker
-- Realizar el despliegue hacia un servidor NGINX
+- Configuración de Spring Mock MVC para usar RestDoc y Documentación de parámetros de peticiones
+  - [Ejemplo 1](Ejemplo-01)
+  - [Reto 1](Reto-01)
 
+- Documentación de respuestas y personalizaciones a la documentación
+  - [Ejemplo 2](Ejemplo-02)
+  - [Reto 2](Reto-02)
 
-#### ORGANIZACION DE LA CLASE 
-
-- Jar ejecutable usando Spring Boot
-	- [Ejemplo 01](Ejemplo-01)
-	- [Reto 01](Reto-01)
-
--  Aprender a usar un archivo war de Spring Boot
-	- [Ejemplo 02](Ejemplo-02)
-	- [Reto 02](Reto-02)
-
-- Aprender a desplegar aplicaciones Docker detrás de un servidor NGinx y en un contenedor Docker
-	- [Ejemplo 03](Ejemplo-03)
-	- [Reto 03](Reto-03)
-
+- Distribución de la documentación dentro de la aplicación
+    - [Ejemplo 3](Ejemplo-03)

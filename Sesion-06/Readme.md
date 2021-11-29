@@ -1,24 +1,21 @@
 
-## Sesión 06: Apache Kafka
+# Sesión 6: Spring Data JPA
 
-### OBJETIVOS 
+## Objetivos
+- Entender qué es una entidad y cómo declararla
+- Aprender qué es un repositorio de Spring Data y la forma de declararlos
+- Usar la consola de H2 para visualizar la información de la base de datos
 
- - Comprender la función de un servidor de mensajes.
- - Conocer Apache Kafka como opción
+## Organización de la clase
 
+- Persistencia con Spring Boot y Spring Data JPA
+  - [Ejemplo 1](Ejemplo-01)
+  - [Reto 1](Reto-01)
 
-#### ORGANIZACION DE LA CLASE 
+- Inicialización de datos
+  - [Ejemplo 2](Ejemplo-02)
+  - [Reto 2](Reto-02)
 
-- Instalación y uso básico de Apache Kafka
-	- [Ejemplo 01](Ejemplo-01)
-	- [Reto 01](Reto-01)
-
-- Creación de productor y envío de mensajes personalizado.
-	- [Ejemplo 02](Ejemplo-02)
-	- [Reto 02](Reto-03)
-
-- Uso de Kafka Streams
-	- [Ejemplo 03](Ejemplo-03)
-	- [Ejemplo 04](Ejemplo-04)
-	- [Reto 03](Reto-03)
-
+- Consola de H2
+  - [Ejemplo 3](Ejemplo-03)
+ 

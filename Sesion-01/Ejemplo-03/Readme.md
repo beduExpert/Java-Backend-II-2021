@@ -1,224 +1,82 @@
-## Ejemplo 3: 
+## Ejemplo: Creación de proyecto Maven con Spring Initializr desde IntelliJ Idea
 
 ### Objetivo
-- Aplicar sentencias avanzadas mongoDB desde Spring
-- Reafirmar conceptos de búsqueda de MongoDB desde Spring
+- Aprender la forma de crear un proyecto Maven usando Spring Initializr desde IntelliJ Idea.
+- Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde el IDE.
+- Ejecutar la aplicación.
 
-### Requisitos
-- MongoDB instalado
-- JDK 8 o superior
-- IDE de tu preferencia
-- mongodb compass (Recomendado pero no necesario)
+#### Requisitos
+- Tener instalado la última versión del JDK 11 (De Oracle u OpenJDK).
+- Tener instalado la última versión del IDE IntelliJ Idea Community Edition (o el trial de la última edition).
+- Tener una conexión a Internet.
 
-### Desarrollo
+#### Desarrollo
 
-1. A partir del proyecto anterior si se desea (o crear uno nuevo) crear una entidad para mapear a un documento llamado `instructors`:
+1. Abre el IDE IntelliJ Idea. Crea un nuevo proyecto usando el menú `New -> Project`. 
 
+![imagen](img/img_01.png)
 
-```java
+2. En el menú que se abre selecciona la opción `Spring Initializr` y como SDK Java **11** (o superior).
 
-package org.bedu.ejemplo03.documents;
+![imagen](img/img_02.png)
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+3. En la ventana que se abre selecciona las siguientes opciones: 
+- Grupo, artefacto y nombre del proyecto.
+- Tipo de proyecto: **Maven Proyect**.
+- Lenguaje: **Java**.
+- Forma de empaquetar la aplicación: **jar**.
+- Versión de Java: **11**.
 
-@Document(collection = "instructors")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-public class Instructor {
-    @Id
-    private String id;
+![imagen](img/img_03.png)
 
-    private User user;
+4. En la siguiente ventana selecciona Spring Web como dependencia para el proyecto. 
 
-    private String name;
-    private String lastname;
-    private String degree;
+![imagen](img/img_04.png)
 
-    @Getter(AccessLevel.NONE)
-    private boolean certified;
+5. En la última ventana dale un nombre y una ubicación al proyecto y presiona el botón `Finish`. Con esto se creará un nuevo proyecto que tiene la siguiente estructura:
 
-    public boolean isCertified(){
-        return this.certified;
-    }
-}
+![imagen](img/img_05.png)
 
-```
+En esta sesión no modificaremos nada del código que el IDE ha creado de forma automática, eso lo dejaremos para la siguiente sesión.
 
-2. Hacer lo mismo para un documento llamado `students`:
+6. El siguiente paso es compilar el código de la aplicación. Para hacerlo ve al panel llamado **Maven** que se encuentra del lado derecho del IDE. Es posible que este panel se encuentre minimizado, como se muestra en la siguiente imagen:
 
-```java
-package org.bedu.ejemplo03.documents;
+![imagen](img/img_06.png)
 
-import lombok.*;
-import org.bedu.ejemplo03.enums.Gender;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+Para abrirlo solo haz clic sobre el nombre del panel, con esto debe desplegarse como se muestra en la siguiente imagen:
 
-import java.util.Date;
+![imagen](img/img_07.png)
 
-@Document(collection = "students")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-public class Student {
-    @Id
-    private String id;
+7. Ahora, para compilar el código de la aplicación y generar el archivo jar que permite la ejecución de esta, existen dos formas de hacerlo. La primera es haciendo doble clic sobre el elemento `package` (con lo que se le indica a Maven que este es el último paso del ciclo de vida de construcción de la aplicación que debe ejecutar).
 
-    private User user;
+![imagen](img/img_08.png)
 
-    private String name;
-    private String lastname;
-    private Date birthdate;
-    private String course;
-    private Float weigth;
-    private Float stature;
-    private Gender gender;
-}
+La otra forma de ejecutar este paso del ciclo de vida es seleccionándolo en el panel de Maven y haciendo clic en el botón de la fecha verde, el cual se llama `Run Maven Build`. Este iniciará la ejecución de los pasos del ciclo de vida hasta el paso seleccionado (en este caso `package`).
 
-```
+![imagen](img/img_09.png)
 
-3. Crear sus respectivos repositorios con esta estructura:
+Con cualquiera de las dos formas el resultado final será el mismo.
 
-```java
-package org.bedu.ejemplo03.Repositories;
+8. En el panel de salida del IDE debemos ver un mensaje como el siguiente, que indica que la aplicación se compiló y ejecutó correctamente:
 
-import org.bedu.ejemplo03.documents.Instructor;
-import org.springframework.data.repository.CrudRepository;
+![imagen](img/img_10.png)
 
-import java.util.List;
+9. Finalmente, para ejecutar la aplicación debemos presionar el botón de la flecha verde situado en la parte superior del IDE.
 
-public interface InstructorRepository extends CrudRepository<Instructor, String> {
-    public List<Instructor> findAllByDegree(String degree);
-    public Instructor findOneByUserUsername(String username);
-}
+![imagen](img/img_11.png)
 
-```
+Con esto debemos ver una salida similar a la siguiente en el panel de salida del IDE:
 
-```java
-package org.bedu.ejemplo03.Repositories;
+![imagen](img/img_12.png)
 
-import org.bedu.ejemplo03.documents.Student;
-import org.springframework.data.repository.CrudRepository;
+Esto indica que la aplicación se levantó correctamente en el puerto 8080. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
 
-public interface StudentRepository extends CrudRepository<Student, String> {
-}
+  http://localhost:8080
 
-```
+Una vez que el sitio cargue, debes ver una pantalla como la siguiente:
 
-4. Modificar el repositorio de la entidad User (`UserRepository`) de la siguiente manera:
+![imagen](img/img_13.png)
 
-```java
-package org.bedu.ejemplo03.Repositories;
+10. Detén la aplicación presionando el botón del cuadro rojo en el panel de salida del IDE.
 
-import org.bedu.ejemplo03.documents.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
-
-import java.util.List;
-
-public interface UserRepository extends MongoRepository<User, String> {
-    public User findOneByUsername(String username);
-    public User findOneByEmail(String email);
-}
-
-```
-
-4. Agregar a la clase principal (Marcada con la anotación `@SpringBootApplication`) lo siguiente:
-
-```java
-package org.bedu.ejemplo03;
-
-import org.bedu.ejemplo03.Repositories.InstructorRepository;
-import org.bedu.ejemplo03.Repositories.StudentRepository;
-import org.bedu.ejemplo03.Repositories.UserRepository;
-import org.bedu.ejemplo03.documents.Instructor;
-import org.bedu.ejemplo03.documents.Student;
-import org.bedu.ejemplo03.documents.User;
-import org.bedu.ejemplo03.enums.Gender;
-import org.bedu.ejemplo03.exceptions.InconsistenceException;
-import org.bedu.ejemplo03.exceptions.PersistenceException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.core.MongoTemplate;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-@SpringBootApplication
-public class Ejemplo03Application implements CommandLineRunner {
-
-    @Autowired
-    private MongoTemplate mongoTemplate;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private InstructorRepository instructorRepository;
-
-    @Autowired
-    private StudentRepository studentRepository;
-
-
-    public static void main(String[] args) {
-        SpringApplication.run(Ejemplo03Application.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-
-        mongoTemplate.dropCollection("instructors");
-        mongoTemplate.dropCollection("students");
-        mongoTemplate.dropCollection("users");
-
-        User userInstructor = new User(null, "sonia.25", "sonia123@email.com", "no-segura", new Date(), new Date());
-        userInstructor = userRepository.save(userInstructor);
-
-        if (userInstructor.getId().isEmpty())
-            throw new PersistenceException("Error al crear usuario");
-
-        Instructor instructor = new Instructor(null, userInstructor, "Sonia", "Rodriguez", "Ing. en sistemas", false);
-        instructor = instructorRepository.save(instructor);
-
-        if (instructor.getId().isEmpty())
-            throw new PersistenceException("Error al crear instructor");
-
-        User userStudent = new User(null, "hector21", "hector-silva@mail.com", "tamapoco-segura", new Date(), new Date());
-        userStudent = userRepository.save(userStudent);
-
-        if (userStudent.getId().isEmpty())
-            throw new PersistenceException("Error al crear usuario");
-
-        Student student = new Student(null, userStudent, "Hector", "Silva", new SimpleDateFormat("yyyy-MM-dd").parse("1993-02-19"), "Redes", 56.5f, 172f, Gender.FEMALE);
-        student = studentRepository.save(student);
-        if (student.getId().isEmpty())
-            throw new PersistenceException("Error al crear estudiante");
-
-        Instructor sonia = instructorRepository.findOneByUserUsername("sonia.25");
-
-        if (!sonia.getUser().getUsername().equals("sonia.25"))
-            throw new InconsistenceException("Algo anda mal con la búsqueda de instructores por nombre de usuario");
-
-        List<Instructor> engComp = instructorRepository.findAllByDegree("Ing. en sistemas");
-        if (engComp.isEmpty())
-            throw new InconsistenceException("Algo anda mal con la búsqueda de instructores por carrera prof.");
-
-        System.out.println();
-        engComp.forEach(System.out::println);
-
-    }
-}
-
-```
-5. Para observar con mejor detalle lo que sucede en la base de datos, agregar la siguiente configuración en el archivo de propiedades:
-
-```
-logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG
-```
-
-6. Ejecutar la aplicación, y comprobar que no existe ningún error además de verificar los logs en la consola y que en la base de datos Mongo existen tres colecciones con sus respectivos documentos.
+![imagen](img/img_14.png)
