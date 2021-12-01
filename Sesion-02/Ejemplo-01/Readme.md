@@ -1,18 +1,18 @@
 ## Ejemplo : Controladores con Spring MVC
 
-### Objetivo
+### OBJETIVO
 - Aprender la forma de crear controladores de Spring usando su módulo web (Spring MVC).
 - Crear un primer servicio REST que regrese un recurso estático.
 - Consumir el servicio usando un navegador Web y con [Postman](https://www.postman.com/downloads/).
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 17 u 11.
 - Tener instalada la herramienta [Postman](https://www.postman.com/downloads/).
 
-#### Desarrollo
+#### DESARROLLO
 
-1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJIdea como lo hiciste en la primera sesión.
+1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea como lo hiciste en la primera sesión.
 
 ![imagen](img/img_01.png)
 
@@ -22,7 +22,7 @@
     Tipo de proyecto: **Maven Project**.
     Lenguaje: **Java**.
     Forma de empaquetar la aplicación: **jar**.
-    Versión de Java: **11**.
+    Versión de Java: **17** u **11**.
 
 ![imagen](img/img_02.png)
 

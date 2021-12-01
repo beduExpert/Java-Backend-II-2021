@@ -1,16 +1,16 @@
 ## Reto: Uso de método PUT y parámetros de fechas
 
-### Objetivo
+### OBJETIVO
 - Aprender la forma de crear controladores de Spring usando su módulo web (Spring MVC) y recibir un parámetro.
 - Crear un servicio REST que regrese un recurso dinámico.
 - Consumir el servicio usando un navegador Web y con Postman.
 
-### Requisitos
+### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 17 u 11.
 - Tener instalada la herramienta Postman.
 
-### Desarrollo
+### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión.
 - Crea una nueva clase que represente un recurso de tipo Saludo con cuatro atributos: "mensaje", "nombre", "edad" y "fechaNacimiento". Este último debe ser de tipo "`LocalDate`".
 - Crea una nueva clase que represente un servicio REST, unando la anotación `@RestController`.
@@ -28,7 +28,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **17** u **11**.
 
 3. Elige Spring Web como la única dependencia del proyecto:
 

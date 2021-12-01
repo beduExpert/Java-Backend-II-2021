@@ -1,16 +1,16 @@
 ## Reto: Uso de método DELETE
 
-### Objetivo
+### OBJETIVO
 - Aprender la forma de crear controladores de Spring usando su módulo web (Spring MVC) y recibir un parámetro a través de un *query string*.
 - Crear un servicio REST que no regrese datos, pero sí un código indicando el estado de la de respuesta.
 - Consumir el servicio usando un navegador Web y con Postman.
 
-### Requisitos
+### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 17 u 11.
 - Tener instalada la herramienta Postman.
 
-### Desarrollo
+### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión.
 - Crea una nueva clase que represente un servicio REST, usando la anotación `@RestController`.
 - Crea un nuevo manejador de peticiones de tipo `DELETE` que reciba como parámetro una cadena, para lo cual tendrás que usar la anotación `@RequestParam`, y regrese un objeto de tipo `ResponseEntity` estableciendo la respuesta a un status de "OK".
@@ -19,14 +19,14 @@
 <details>
 	<summary>Solución</summary>
   
-1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJIdea como lo hiciste en la primera sesión.
+1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea como lo hiciste en la primera sesión.
 
 2. En la ventana que se abre selecciona las siguientes opciones:
 - Grupo, artefacto y nombre del proyecto.
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **17** u **11**.
 
 3. Elige **Spring Web** como la única dependencia del proyecto:
 

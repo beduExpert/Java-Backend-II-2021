@@ -1,12 +1,12 @@
 ## Postwork Sesión 02
 
-### Objetivo
+### OBJETIVO
 - Crear una serie de modelos que representarán la información que es manejada por el CRM.
 - Crear la estructura de los servicios que permitirán implementar las diferentes funcionalidades del CRM.
 - Crear los paquetes que representarán cada una de las capas de la aplicación.
 
 
-#### Desarrollo   
+#### DESARROLLO
 
 1. Crea los siguientes paquetes en el proyecto principal:
     - *model*
