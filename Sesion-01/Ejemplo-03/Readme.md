@@ -1,22 +1,22 @@
 ## Ejemplo: Creación de proyecto Maven con Spring Initializr desde IntelliJ Idea
 
-### Objetivo
+### OBJETIVO
 - Aprender la forma de crear un proyecto Maven usando Spring Initializr desde IntelliJ Idea.
 - Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde el IDE.
 - Ejecutar la aplicación.
 
-#### Requisitos
-- Tener instalado la última versión del JDK 11 (De Oracle u OpenJDK).
+#### REQUISITOS
+- Tener instalado la última versión del JDK 17 u 11.
 - Tener instalado la última versión del IDE IntelliJ Idea Community Edition (o el trial de la última edition).
 - Tener una conexión a Internet.
 
-#### Desarrollo
+#### DESARROLLO
 
 1. Abre el IDE IntelliJ Idea. Crea un nuevo proyecto usando el menú `New -> Project`. 
 
 ![imagen](img/img_01.png)
 
-2. En el menú que se abre selecciona la opción `Spring Initializr` y como SDK Java **11** (o superior).
+2. En el menú que se abre selecciona la opción `Spring Initializr` y como SDK Java **11** o superior.
 
 ![imagen](img/img_02.png)
 
@@ -25,7 +25,7 @@
 - Tipo de proyecto: **Maven Proyect**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **17** u **11**.
 
 ![imagen](img/img_03.png)
 

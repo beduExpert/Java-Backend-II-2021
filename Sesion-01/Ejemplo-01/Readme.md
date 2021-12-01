@@ -1,22 +1,22 @@
 ## Ejemplo: Creación de proyecto Gradle con Spring Initializr
 
-### Objetivo
-- Aprender la forma de crear un proyecto Gradle usando Spring Initializr.
+### OBJETIVO
+- Crear un proyecto Gradle usando Spring Initializr.
 - Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde la línea de comandos.
 - Ejecutar la aplicación desde la línea de comandos.
 
-#### Requisitos
-1. Tener instalado la última versión del JDK 11 (De Oracle u OpenJDK).
+#### REQUISITOS
+1. Tener instalado la última versión del JDK 17 (El JDK 11 también te servirá en esta sesión).
 
-#### Desarrollo
+#### DESARROLLO
 
 1. Entra al sitio de [Spring Initializr](https://start.spring.io/). Ahí verás una sola página dividida en dos secciones. Comienza llenando la información de la sección del lado izquierdo. Selecciona:
   - Gradle Proyect (no te preocupes, no es necesario que tengas Gradle instalado).
   - Lenguaje: **Java**.
-  - Versión de Spring Boot, la versión estable más reciente (al momento de escribir esto la **2.3.5**)
+  - Versión de Spring Boot, la versión estable más reciente
   - Grupo, artefacto y nombre del proyecto.
   - Forma de empaquetar la aplicación: **jar**.
-  - Versión de Java: **11**.
+  - Versión de Java: **17** u **11**.
 
 ![imagen](img/img_01.png)
 

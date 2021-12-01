@@ -1,15 +1,15 @@
 ## Ejemplo: Creación de proyecto Maven con Spring Initializr
 
-### Objetivo
-- Aprender la forma de crear un proyecto Maven usando Spring Initializr.
+### OBJETIVO
+- Crear un proyecto Maven usando Spring Initializr.
 - Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde la línea de comandos.
 - Ejecutar la aplicación desde la línea de comandos.
 
-#### Requisitos
-1. Tener instalado la última versión del JDK 11 (De Oracle u OpenJDK).
+#### REQUISITOS
+1. Tener instalado la última versión del JDK 17 u 11
 2. Tener una conexión a Internet.
 
-#### Desarrollo
+#### DESARROLLO
 
 1. Entra al sitio de [Spring Initializr](https://start.spring.io/). Ahí verás una sola página dividida en dos secciones. Comienza llenando la información de la sección del lado izquierdo. Selecciona:
   - Tipo de proyecto: **Maven Proyect**.
@@ -17,7 +17,7 @@
   - Versión de Spring Boot, la versión estable más reciente (al momento de escribir esto la **2.3.5**)
   - Grupo, artefacto y nombre del proyecto.
   - Forma de empaquetar la aplicación: **jar**.
-  - Versión de Java: **11**.
+  - Versión de Java:**17** u **11**.
 
 ![imagen](img/img_01.png)
 

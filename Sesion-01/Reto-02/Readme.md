@@ -1,17 +1,17 @@
 ## Reto: Creación de Proyecto Maven con Spring Initializr
 
-## Objetivo
+## OBJETIVO
 - Crear un nuevo proyecto Spring Boot, usando Spring Initializr, sin ayuda del instructor.
 - Ejecutar una aplicación desde la línea de comandos, sin necesidad de instalar Maven.
 
-## Requisitos
-- Tener instalado la última versión del **JDK 11** (De Oracle u OpenJDK).
+## REQUISITOS
+- Tener instalado la última versión del **JDK 17 u 11**.
 - Tener acceso a la línea de comandos.
 
-## Desarrollo
+## DESARROLLO
 Crear un proyecto de Spring Boot usando Spring Initializr con las siguientes características:
 - Herramienta de construcción: **Maven**
-- Lenguaje de programación: **Java 11**
+- Lenguaje de programación: **Java 17 u 11**
 - Versión de Spring Boot: la más actual que no sea un `SNAPSHOT` ni un `RC`.
 
 <details>
@@ -20,10 +20,10 @@ Crear un proyecto de Spring Boot usando Spring Initializr con las siguientes car
 1. Entra al sitio de [Spring Initializr](https://start.spring.io/). Comienza llenando la información de la sección del lado izquierdo.
 - Tipo de Proyecto: **Maven** Proyect.
 - Lenguaje: **Java**.
-- Versión de Spring Boot, la versión estable más reciente (al momento de escribir esto la 2.3.5)
+- Versión de Spring Boot, la versión estable más reciente
 - Grupo, artefacto y nombre del proyecto.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **17** u **11**.
 
 ![imagen](img/img_01.png)
 
