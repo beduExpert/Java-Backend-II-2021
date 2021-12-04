@@ -1,13 +1,13 @@
 ## Reto: Validaciones con expresiones regulares
 
-### Objetivo
-- Aplicar las anotaciones proporcionadas por el JSR 303 para restringir los valores correctos de los atributos de los objetos del modelo de datos.
+### OBJETIVO
+- Aplicar las anotaciones proporcionadas por el JSR 380 para restringir los valores correctos de los atributos de los objetos del modelo de datos.
 - Hacer uso de expresiones regulares para aplicar validaciones personalizadas.
-- Usar Hibernate Validator como implementación del JSR 303.
+- Usar Hibernate Validator como implementación del JSR 380.
 
 #### Requisitos
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
 #### Desarrollo
@@ -40,7 +40,7 @@
 - Tipo de proyecto: **Maven Project**. 
 - Lenguaje: **Java**. 
 - Forma de empaquetar la aplicación: **jar**. 
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige Spring Web y **Validation** como dependencias del proyecto:
 

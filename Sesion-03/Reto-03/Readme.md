@@ -1,15 +1,15 @@
 ## Reto: Manejo de cualquier excepción con con @RestControllerAdvice
 
-### Objetivo
-- Manejar todas las excepciones ocurridas en los servicios, sin importar de qué tipo, usando un método marcado con @RestControllerAdvice.
+### OBJETIVO
+- Manejar todas las excepciones ocurridas en los servicios, sin importar de qué tipo, usando un método marcado con `@RestControllerAdvice`.
 - Regresar a quien invoca los servicios (en este caso Postman) un mensaje claro y que ayude a entender qué información no es correcta.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
-#### Desarrollo
+#### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión.
 
 - Crea una clase `Cliente` con los siguientes atributos:
@@ -37,7 +37,7 @@
 - Tipo de proyecto: **Maven Project**. 
 - Lenguaje: **Java**. 
 - Forma de empaquetar la aplicación: **jar**. 
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige Spring Web como dependencia del proyecto:
 
@@ -184,7 +184,7 @@ public class ManejadorGlobalExcepciones {
 
 ```json
 {
-    "fechaProgramada": "2020-12-11T09:00:00"
+    "fechaProgramada": "2021-12-11T09:00:00"
 }
 ```
 

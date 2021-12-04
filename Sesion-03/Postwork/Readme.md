@@ -1,12 +1,12 @@
 ## Postwork Sesión 03
 
-### Objetivo
+### OBJETIVO
 - Agregar validaciones a los atributos de las clases que representan el modelo de negocio de la aplicación.
 - Agregar un manejador de excepciones global para errores de validaciones y para errores generales de la aplicación, que pueda ser extendido conforme se agregan más - funcionalidades y reglas de negocio.
 
 
 
-#### Desarrollo   
+#### DESARROLLO
 
 1. Agrega las validaciones que consideres necesarias. Puedes elegir las validaciones de la siguiente lista:
 - @NotNull

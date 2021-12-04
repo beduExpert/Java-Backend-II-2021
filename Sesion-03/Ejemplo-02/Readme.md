@@ -1,15 +1,15 @@
 ## Ejemplo: Validación de errores con @ExceptionHandler
 
-### Objetivo
-- Manejar las excepciones ocurridas en las validaciones de datos usando un método marcado con @ExceptionHandler
+### OBJETIVO
+- Manejar las excepciones ocurridas en las validaciones de datos usando un método marcado con `@ExceptionHandler`
 - Regresar a quien invoca los servicios (en este caso Postman) un mensaje claro y que ayude a entender qué información no es correcta.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
-#### Desarrollo
+#### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 
@@ -18,7 +18,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige Spring Web y Validation como dependencias del proyecto.
 
