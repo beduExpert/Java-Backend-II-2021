@@ -16,7 +16,7 @@ Su objetivo es ayudarnos a generar esa estructura inicial del proyecto de una fo
 
 #### REQUISITOS
 
-- Tener instalado el JDK versión 17
+- Tener instalado el JDK versión 11 o 17
 - Tener instalado IntelliJ IDEA Community Edition
 
 
@@ -33,3 +33,6 @@ Su objetivo es ayudarnos a generar esa estructura inicial del proyecto de una fo
 - Proyecto Maven con IntelliJ Idea
     - [Ejemplo 03](Ejemplo-03)
     - [Reto 03](Reto-03)
+	
+### POSTWORK
+- [Creación de la estructura del proyecto](Postwork)
