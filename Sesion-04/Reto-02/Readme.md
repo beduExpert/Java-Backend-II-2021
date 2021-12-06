@@ -1,16 +1,16 @@
 ## Reto 2: Manejo de errores extendiendo ResponseEntityExceptionHandler 
 
-### Objetivo
+### OBJETIVO
 - Manejar los errores comunes ocurridos dentro de una aplicación web, extendiendo de la clase base `ResponseEntityExceptionHandler` de Spring.
-- Proporcionar una estructura cnsistente del manejo de errores.
+- Proporcionar una estructura consistente del manejo de errores.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
 
-#### Desarrollo
+#### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión. 
 - Crea una nueva clase que represente un recurso de tipo `Producto` con los siguientes atributos: 
     - long id;

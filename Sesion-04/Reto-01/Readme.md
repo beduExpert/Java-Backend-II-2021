@@ -1,24 +1,23 @@
 ## Reto 1: Manejo de errores con ResponseStatusException
 
-### Objetivo
+### OBJETIVO
 - Regresar los estatus de respuesta más adecuados cuando ocurre un error al procesar una petición.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
 
-#### Desarrollo
+#### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión.
 - Crea una nueva clase que represente un recurso de tipo `Producto` con los siguientes atributos:
     - long id
     - String nombre
     - float precio
-- Crea una nueva clase que represente un servicio REST, unando la anotación @RestController.
+- Crea una nueva clase que represente un servicio REST, usando la anotación `@RestController`.
 - Crea un nuevo manejador de peticiones **POST** que reciba como un parámetro un objeto `Producto`; si el precio es mayor a 1.00 y se proporciona un nombre se debe regresar un código de respuesta **201**(CREATED). Si se proporciona un id se debe regresar un código de respuesta **404** (NOT_FOUND). Si no se cumple ninguna de las condiciones anteriores se debe regresar un código de respuesta **400** (BAD_REQUEST).
 - Hacer la prueba desde la herramienta Postman.
-
 
 
 <details>
@@ -31,7 +30,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige Spring Web como dependencia del proyecto.
 

@@ -1,12 +1,12 @@
 ## Ejemplo 3: Negociación de contenido
 
-### Objetivo
-- Mostrar las formas que Spring MVC ofrece para poder regresarle al usuario una respuesta usando en formatos o tipos de contenido.
+### OBJETIVO
+- Aprender las formas que Spring MVC ofrece para regresar al usuario una respuesta usando en formatos o tipos de contenido.
 - Indicar si una respuesta debe recibirse en formato JSON o en formato XML.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
 #### Desarrollo
@@ -17,7 +17,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web** como dependencia del proyecto.
 
