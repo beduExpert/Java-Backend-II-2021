@@ -1,4 +1,4 @@
-## Reto 2: Uso de MapSctruct usando atributos con nombres diferentes
+## Reto 2: Uso de MapStruct usando atributos con nombres diferentes
 
 ### OBJETIVO
 - Crear una interfaz básica de MapStruct que permita mapear de un objeto `Visita` a un objeto `VisitaDto` y viceversa.

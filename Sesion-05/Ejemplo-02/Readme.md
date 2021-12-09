@@ -1,4 +1,4 @@
-## Ejemplo 2: Uso de MapSctruct
+## Ejemplo 2: Uso de MapStruct
 
 ### OBJETIVO
 - Crear una interfaz básica de MapStruct que permita mapear de un objeto `Cliente` a un objeto `ClienteDto` y viceversa.
