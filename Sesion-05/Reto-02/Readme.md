@@ -1,12 +1,12 @@
 ## Reto 2: Uso de MapSctruct usando atributos con nombres diferentes
 
-### Objetivo
+### OBJETIVO
 - Crear una interfaz básica de MapStruct que permita mapear de un objeto `Visita` a un objeto `VisitaDto` y viceversa.
 - Crear mapeos cuando el nombre de origen es diferente al nombre destino; por ejemplo: fecha -> fechaProgramada.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
 
 #### Desarrollo

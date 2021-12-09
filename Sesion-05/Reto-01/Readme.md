@@ -1,11 +1,11 @@
 ## Reto 1: Creación de getters, setters, constructores, equals y hashcode con @Data
 
-### Objetivo
+### OBJETIVO
 - Usar las anotaciones básicas de Lombok para la generación de getters, setters, constructores, equals y hashcode.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
 

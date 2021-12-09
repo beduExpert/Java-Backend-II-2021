@@ -1,12 +1,12 @@
 ## Postwork Sesión 5
 
-### Objetivo
-- Aprender a usar **Lombok** como herramienta que genera código común (bolerplate) en objetos Java
-- Aprender a usar **MapStruct** para mapear los atributos de un objeto con los de un objeto diferente.
+### OBJETIVO
+- Usar **Lombok** como herramienta que genera código común (bolerplate) en objetos Java
+- Aplicar **MapStruct** para mapear los atributos de un objeto con los de un objeto diferente.
 - Exponer los objetos creados con MapStruct como componentes de Spring.
 
 
-#### Desarrollo   
+#### DESARROLLO
 - Agrega las dependencias de *Lombok* y *MapStruct* en el archivo *pom.xml* del proyecto.
 
 - Los objetos del paquete `model` tienen, hasta ahora, solamente atributos, usa las siguientes anotaciones de Lombok:
