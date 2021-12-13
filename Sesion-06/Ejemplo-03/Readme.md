@@ -1,16 +1,16 @@
 ## Ejemplo 3: Uso de la consola embebdida H2 para manejar la base de datos
 
-### Objetivo
+### OBJETIVO
 - Usar la consola integrada con la base de datos embebida H2 para conectarnos a la instancia de MySQL.
 - Proporcionar un mecanismo sencillo para poder adminsitrar la información de la base de datos sin herramientas externas.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
-#### Desarrollo
+#### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 
@@ -19,7 +19,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web**, **Lombok**, **Spring Data JPA** y **MySQL Driver** como dependencia del proyecto.
 

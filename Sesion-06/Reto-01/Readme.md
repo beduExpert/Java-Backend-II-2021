@@ -1,13 +1,13 @@
 ## Reto 1: Persistencia de datos con Spring Data JPA
 
-### Objetivo
+### OBJETIVO
 - Obtener información almacenada en la base de datos.
 - Hacer uso de las anotaciones básicas de JPA para indicar qué objeto debe ser tratado como una entidad de base de datos.
 - Aprender qué es un repositorio y los métodos por default que ofrece.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
@@ -30,7 +30,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web**, **Lombok**, **Spring Data JPA** y **MySQL Driver** como dependencia del proyecto.
 

@@ -1,12 +1,12 @@
 ## Ejemplo 2: Inicialización de base de datos con CommandLineRunner y Lombok
 
-### Objetivo
+### OBJETIVO
 - Aprovechar la interface `CommandLineRunner` para ejecutar algunas tareas antes de que la aplicación comience a recibir peticiones.
 - Inicializar valores de catálogos en base de datos.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
@@ -19,7 +19,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web**, **Lombok**, **Spring Data JPA** y **MySQL Driver** como dependencia del proyecto.
 

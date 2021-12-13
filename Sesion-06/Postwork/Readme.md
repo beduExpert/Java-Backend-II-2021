@@ -1,12 +1,12 @@
 ## Postwork Sesión 6
 
-### Objetivo
-- Entender qué es una entidad y cómo declararla usando las anotaciones de JPA dentro de nuestro proyecto.
-- Aprender qué es un repositorio de Spring Data, la forma de declararlos y de usarlos para las operaciones relacionadas con el manejo de las bases de datos.
-- Usar la consola de H2 para visualizar la información de la base de datos embebida dentro de nuestra aplicación.
+### OBJETIVO
+- Declarar entidades y almacenarlas en una base de datos relacional.
+- Crear un repositorio de Spring Data y para guardar y recuperar entidades.
+- Usar la consola de H2 para visualizar la información de la base de datos
 
 
-#### Desarrollo   
+#### DESARROLLO
 1. Agrega el driver de MySQL como dependencia del proyecto.
 
 2. Agrega las propiedades para realizar la conexión a la base de datos en el archivo `application.properties` del proyecto. 
