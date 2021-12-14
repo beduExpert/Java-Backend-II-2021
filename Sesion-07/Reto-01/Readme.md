@@ -1,15 +1,15 @@
 ## Reto 1: Pruebas unitarias variables con JUnit 5 y Mockito
 
-### Objetivo
+### OBJETIVO
 - Simular el funcionamiento de una clase que aún no existe, usando un mock creado con Mockito, la cual variará la respuesta dependiendo del valor recibido como parámetro.  
 - Crear una prueba que ayude a vaiar el correcto funcionamiento de una clase o componente.
 
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
-#### Desarrollo
+#### DESARROLLO
 - Crea un nuevo proyecto usando Spring Initilizr y agrega la dependencia de **Lombok**.
 - Crea los subpaquetes: `services` y `persistence`
 - Crea una interface `CalculadoraDao`, que será un componente de Spring, y tendrá el siguiente método: `int findValorConstante(int valorInicial);`.

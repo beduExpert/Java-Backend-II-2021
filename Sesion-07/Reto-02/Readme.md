@@ -1,14 +1,14 @@
 ## Reto 2: Pruebas unitarias de métodos Post con MockMvc
 
-### Objetivo
+### OBJETIVO
 
 - Enviar parámetros en el cuerpo de una petición POST.
 - Crear una prueba unitaria que valide el funcionamiento de los controladores.
 - Simular el comportamiento de los objetos en la capa de servicios de la aplicación (lógica de negocio) usando objetos mock.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
 
 #### Desarrollo

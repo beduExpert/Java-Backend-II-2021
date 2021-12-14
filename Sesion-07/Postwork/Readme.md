@@ -1,11 +1,13 @@
 ## Postwork Sesión 7
 
-### Objetivo
-- Tener un entendimiento básico de qué es una prueba unitaria.
-- Aplicar pruebas unitarias en Spring Boot usando los objetos proporcionados por Spring Test.
+### OBJETIVO
+- Integrar JUnit como framework de pruebas unitarias en una aplicación desarrollada con Spring Boot.
+- Desarrollar una serie de pruebas unitarias usando los objetos proporcionados por Spring Test para validar el correcto funcionamietno de la aplicación.
+- Ejecutar y obtener el resultado de las pruebas unitarias desde el entorno de desarrollo.
 
 
-#### Desarrollo   
+
+#### DESARROLLO
 1. Termina la implementación de los métodos de negocio, que se encuentran en la capa services de la aplicación, para tener las funcionalidades básicas de guardado, eliminación, bajas y actualizaciones de cada uno de los tipos de entidad.
 
 2. Para el paso anterior será necesario implementar las funcionalidades en todas las capas de la aplicación, desde los controladores hasta los repositorios para el manejo de los datos almacenados.

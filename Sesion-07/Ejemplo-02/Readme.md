@@ -1,16 +1,16 @@
 ## Ejemplo 2: Pruebas unitarias de controladores con MockMvc
 
-### Objetivo
+### OBJETIVO
 
 - Crear una prueba unitaria que valide el funcionamiento de los controladores.
 - Simular el comportamiento de los objetos en la capa de servicios de la aplicación (lógica de negocio) usando objetos mock.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+#### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 
@@ -19,7 +19,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web** y **Lombok** como dependencias del proyecto. En automático se agregarán también las dependencias para realizar pruebas unitarias.
 
