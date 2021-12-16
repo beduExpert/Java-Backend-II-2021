@@ -1,14 +1,14 @@
 ## Reto: Creación de Proyecto Gradle con Spring Initializr
 
-## OBJETIVO
+### OBJETIVO
 - Crear un nuevo proyecto Spring Boot, usando Spring Initializr, sin ayuda del instructor.
-- Ejecutar una aplicación desde la línea de comandos, sin necesidad de instalar Gradle.
+- Ejecutar una aplicación desde la línea de comandos sin necesidad de instalar Gradle.
 
-## REQUISITOS
-- Tener instalado la última versión del **JDK 17 u 11**.
+#### REQUISITOS
+- Tener instalado la última versión del **JDK 11 o 17**.
 - Tener acceso a la línea de comandos.
 
-## DESARROLLO
+### DESARROLLO
 Crear un proyecto de Spring Boot usando Spring Initializr con las siguientes características:
 - Herramienta de construcción: **Gradle**
 - Lenguaje de programación: **Java 17 u 11**
@@ -23,7 +23,7 @@ Crear un proyecto de Spring Boot usando Spring Initializr con las siguientes car
 - Versión de Spring Boot, la versión estable más reciente
 - Grupo, artefacto y nombre del proyecto.
 - Forma de empaquetar la aplicación: **jar**.
- - Versión de Java: **17** u **11**.
+ - Versión de Java: **11** o **17**.
 
 ![imagen](img/img_01.png)
 
@@ -57,7 +57,7 @@ o navega al directorio **build\libs**, abre una terminal en este directorio y ej
 
     java -jar backend.sesion1-0.0.1-SNAPSHOT.jar
     
-Esto indica que la aplicación se levantó correctamente en el puerto 8080. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+Esto indica que la aplicación se levantó correctamente en el puerto **8080**. 
 
   http://localhost:8080
 

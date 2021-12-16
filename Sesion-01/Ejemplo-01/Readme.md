@@ -3,12 +3,12 @@
 ### OBJETIVO
 - Crear un proyecto Gradle usando Spring Initializr.
 - Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde la línea de comandos.
-- Ejecutar la aplicación desde la línea de comandos.
+
 
 #### REQUISITOS
-1. Tener instalado la última versión del JDK 17 (El JDK 11 también te servirá en esta sesión).
+1. Tener instalada la última versión del JDK 11 o 17.
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Entra al sitio de [Spring Initializr](https://start.spring.io/). Ahí verás una sola página dividida en dos secciones. Comienza llenando la información de la sección del lado izquierdo. Selecciona:
   - Gradle Proyect (no te preocupes, no es necesario que tengas Gradle instalado).
@@ -52,7 +52,7 @@
 
 ![imagen](img/img_08.png)
 
-Esto indica que la aplicación se levantó correctamente en el puerto **8080**. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+Esto indica que la aplicación se está ejecutando en el puerto **8080**. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
 
       http://localhost:8080
       
@@ -72,11 +72,11 @@ Puesto que la aplicación está completamente contenida en un archivo `jar`, tam
 
         java -jar backend.sesion1-0.0.1-SNAPSHOT.jar
         
-13. Con esto nuevamente debes obtener una salida como la siguiente:
+13. Con esto debes obtener una salida como la siguiente:
 
 ![imagen](img/img_11.png)
 
-Nuevamente, esto indica que la aplicación se levantó correctamente en el puerto **8080**. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+Nuevamente, esto indica que la aplicación se levantó correctamente en el puerto **8080**.
 
       http://localhost:8080
       

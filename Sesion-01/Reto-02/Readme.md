@@ -1,17 +1,17 @@
 ## Reto: Creación de Proyecto Maven con Spring Initializr
 
-## OBJETIVO
+### OBJETIVO
 - Crear un nuevo proyecto Spring Boot, usando Spring Initializr, sin ayuda del instructor.
 - Ejecutar una aplicación desde la línea de comandos, sin necesidad de instalar Maven.
 
-## REQUISITOS
-- Tener instalado la última versión del **JDK 17 u 11**.
+#### REQUISITOS
+- Tener instalado la última versión del **JDK 11 o 17**.
 - Tener acceso a la línea de comandos.
 
-## DESARROLLO
+### DESARROLLO
 Crear un proyecto de Spring Boot usando Spring Initializr con las siguientes características:
 - Herramienta de construcción: **Maven**
-- Lenguaje de programación: **Java 17 u 11**
+- Lenguaje de programación: **Java 11 o 17**
 - Versión de Spring Boot: la más actual que no sea un `SNAPSHOT` ni un `RC`.
 
 <details>
@@ -23,7 +23,7 @@ Crear un proyecto de Spring Boot usando Spring Initializr con las siguientes car
 - Versión de Spring Boot, la versión estable más reciente
 - Grupo, artefacto y nombre del proyecto.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **17** u **11**.
+- Versión de Java: **11** o **17**.
 
 ![imagen](img/img_01.png)
 
@@ -59,7 +59,7 @@ o navega al directorio **target**, abre una terminal en este directorio y ejecut
 
     java -jar reto2.ejemplo2-0.0.1-SNAPSHOT.jar
     
-Esto indica que la aplicación se levantó correctamente en el puerto 8080. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+Esto indica que la aplicación se levantó correctamente en el puerto **8080**. 
 
   http://localhost:8080
 

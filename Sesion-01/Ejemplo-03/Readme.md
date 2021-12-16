@@ -1,12 +1,11 @@
 ## Ejemplo: Creación de proyecto Maven con Spring Initializr desde IntelliJ Idea
 
 ### OBJETIVO
-- Aprender la forma de crear un proyecto Maven usando Spring Initializr desde IntelliJ Idea.
+- Crear un proyecto Maven usando Spring Initializr desde IntelliJ Idea.
 - Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde el IDE.
-- Ejecutar la aplicación.
 
 #### REQUISITOS
-- Tener instalado la última versión del JDK 17 u 11.
+- Tener instalado la última versión del JDK 11 o 17.
 - Tener instalado la última versión del IDE IntelliJ Idea Community Edition (o el trial de la última edition).
 - Tener una conexión a Internet.
 
@@ -25,7 +24,7 @@
 - Tipo de proyecto: **Maven Proyect**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **17** u **11**.
+- Versión de Java: **11** o **17**.
 
 ![imagen](img/img_03.png)
 
@@ -47,7 +46,7 @@ Para abrirlo solo haz clic sobre el nombre del panel, con esto debe desplegarse 
 
 ![imagen](img/img_07.png)
 
-7. Ahora, para compilar el código de la aplicación y generar el archivo jar que permite la ejecución de esta, existen dos formas de hacerlo. La primera es haciendo doble clic sobre el elemento `package` (con lo que se le indica a Maven que este es el último paso del ciclo de vida de construcción de la aplicación que debe ejecutar).
+7. Ahora, para compilar el código de la aplicación y generar el archivo `jar` que permite la ejecución de esta, existen dos formas de hacerlo. La primera es haciendo doble clic sobre el elemento `package` (con lo que se le indica a Maven que este es el último paso del ciclo de vida de construcción de la aplicación que debe ejecutar).
 
 ![imagen](img/img_08.png)
 
@@ -69,7 +68,7 @@ Con esto debemos ver una salida similar a la siguiente en el panel de salida del
 
 ![imagen](img/img_12.png)
 
-Esto indica que la aplicación se levantó correctamente en el puerto 8080. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+Esto indica que la aplicación se levantó correctamente en el puerto **8080**.
 
   http://localhost:8080
 

@@ -3,10 +3,9 @@
 ### OBJETIVO
 - Crear un proyecto Maven usando Spring Initializr.
 - Compilar, empaquetar y ejecutar la aplicación o proyecto generados desde la línea de comandos.
-- Ejecutar la aplicación desde la línea de comandos.
 
 #### REQUISITOS
-1. Tener instalado la última versión del JDK 17 u 11
+1. Tener instalado la última versión del JDK 11 o 17.
 2. Tener una conexión a Internet.
 
 #### DESARROLLO
@@ -17,7 +16,7 @@
   - Versión de Spring Boot, la versión estable más reciente.
   - Grupo, artefacto y nombre del proyecto.
   - Forma de empaquetar la aplicación: **jar**.
-  - Versión de Java: **17** u **11**.
+  - Versión de Java: **11** o **17**.
 
 ![imagen](img/img_01.png)
 
@@ -53,7 +52,7 @@
 
 ![imagen](img/img_09.png)
 
-Esto indica que la aplicación se levantó correctamente en el puerto **8080**. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+Esto indica que la aplicación se levantó correctamente en el puerto **8080**. 
 
       http://localhost:8080
       
@@ -77,7 +76,7 @@ Puesto que la aplicación está completamente contenida en un archivo `jar`, tam
 
 ![imagen](img/img_12.png)
 
-Nuevamente, esto indica que la aplicación se levantó correctamente en el puerto **8080**. Como no hemos colocado ningún contenido en la aplicación no hay mucho que mostrar, pero podremos comprobar que la aplicación está bien configurada, que todos los elementos necesarios están instalados y configurados y que nuestra aplicación se ejecuta de forma correcta:
+Nuevamente, esto indica que la aplicación se levantó correctamente en el puerto **8080**.
 
       http://localhost:8080
       
