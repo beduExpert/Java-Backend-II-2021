@@ -4,7 +4,7 @@
 - Agregar manejadores de errores globales para errores generados por el usuario, como datos enviados de forma incorrecta y el uso de métodos HTTP no soportados.
 - Permitir al usuario seleccionar el formato del contenido en el que desea recibir las respuestas por parte de los servicios.
 
-#### DESARROLLO
+### DESARROLLO
 1. Agrega un manejador de errores a tu proyecto, usando una clase que extienda de `ResponseEntityExceptionHandler`. Sobreescribe los siguientes métodos:
 - handleMethodArgumentNotValid
 - handleHttpRequestMethodNotSupported 

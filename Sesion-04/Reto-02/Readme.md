@@ -1,4 +1,4 @@
-## Reto 2: Manejo de errores extendiendo ResponseEntityExceptionHandler 
+## Reto: Manejo de errores extendiendo ResponseEntityExceptionHandler 
 
 ### OBJETIVO
 - Manejar los errores comunes ocurridos dentro de una aplicación web, extendiendo de la clase base `ResponseEntityExceptionHandler` de Spring.
@@ -10,7 +10,7 @@
 - Tener instalada la herramienta Postman.
 
 
-#### DESARROLLO
+### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión. 
 - Crea una nueva clase que represente un recurso de tipo `Producto` con los siguientes atributos: 
     - long id;

@@ -1,4 +1,4 @@
-## Reto 1: Manejo de errores con ResponseStatusException
+## Reto: Manejo de errores con ResponseStatusException
 
 ### OBJETIVO
 - Regresar los estatus de respuesta más adecuados cuando ocurre un error al procesar una petición.
@@ -9,7 +9,7 @@
 - Tener instalada la herramienta Postman.
 
 
-#### DESARROLLO
+### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión.
 - Crea una nueva clase que represente un recurso de tipo `Producto` con los siguientes atributos:
     - long id

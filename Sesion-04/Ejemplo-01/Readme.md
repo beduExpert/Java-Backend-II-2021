@@ -1,4 +1,4 @@
-## Ejemplo 1: Manejo de errores con ResponseStatusException
+## Ejemplo: Manejo de errores con ResponseStatusException
 
 ### OBJETIVO
 - Regresar los estatus de respuesta más adecuados cuando ocurre un error al procesar una petición.
@@ -9,7 +9,7 @@
 - Tener instalada la herramienta Postman.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

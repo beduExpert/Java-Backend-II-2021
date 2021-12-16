@@ -1,4 +1,4 @@
-## Ejemplo 2: Manejo de errores extendiendo ResponseEntityExceptionHandler 
+## Ejemplo: Manejo de errores extendiendo ResponseEntityExceptionHandler 
 
 
 ### OBJETIVO
@@ -12,7 +12,7 @@
 - Tener instalada la herramienta Postman.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

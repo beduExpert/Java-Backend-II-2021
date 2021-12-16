@@ -1,4 +1,4 @@
-## Ejemplo 3: Negociación de contenido
+## Ejemplo: Negociación de contenido
 
 ### OBJETIVO
 - Aprender las formas que Spring MVC ofrece para regresar al usuario una respuesta usando en formatos o tipos de contenido.
@@ -9,7 +9,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
-#### Desarrollo
+### Desarrollo
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 
 2. En la ventana que se abre selecciona las siguientes opciones:
