@@ -5,7 +5,7 @@
 - Crear un servicio REST que no regrese datos, pero sí un código indicando el estado de la de respuesta.
 - Consumir el servicio usando un navegador Web y con Postman.
 
-### REQUISITOS
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition.
 - Tener instalada la última versión del JDK 17 u 11.
 - Tener instalada la herramienta Postman.

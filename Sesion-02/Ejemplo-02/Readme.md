@@ -8,7 +8,7 @@
 - Tener instalada la última versión del JDK 17 u 11.
 - Tener instalada la herramienta Postman.
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea como lo hiciste en la primera sesión.
 

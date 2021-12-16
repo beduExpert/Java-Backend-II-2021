@@ -6,7 +6,7 @@
 - Crear los paquetes que representarán cada una de las capas de la aplicación.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea los siguientes paquetes en el proyecto principal:
     - *model*

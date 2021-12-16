@@ -10,7 +10,7 @@
 - Tener instalada la última versión del JDK 17 u 11.
 - Tener instalada la herramienta [Postman](https://www.postman.com/downloads/).
 
-#### DESARROLLO
+### DESARROLLO
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión.
 - Crea una nueva clase que represente un recurso de tipo `Saludo` con dos atributos, un "mensaje" y un "nombre". 
 - Crea una nueva clase que represente un servicio REST, unando la anotación `@RestController`.
