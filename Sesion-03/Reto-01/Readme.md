@@ -10,7 +10,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 - Tener instalada la herramienta Postman.
 
-#### Desarrollo
+### Desarrollo
 - Crea un nuevo proyecto Spring Boot en IntelliJ Idea como lo hiciste en la primera sesión.
 - Crea una nueva clase que represente un recurso de tipo `Producto` con los siguientes atributos: 
     - long id;
