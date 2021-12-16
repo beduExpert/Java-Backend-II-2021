@@ -1,17 +1,17 @@
 ## Reto 2: Generación de documentación de respuestas para POST y personalizacion de URL y puerto de peticiones
 
-### Objetivo
+### OBJETIVO
 
 - Documentar los parámetros que se envían en el cuerpo de una petición POST y las respuestas recibidas.
 - Generar un documento HTML con la documentación para poder distribuirlo.
 - Personalizar el contenido de la documentación, así como la URL (host, esquema y puerto) al que apuntan los ejemplos.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+#### DESARROLLO
 - Crea un nuevo proyecto usando Spring Initilizr y agrega las dependencias de **Spring Web**, **Spring Rest Docs** y **Lombok**.
 - Crea los subpaquetes: `controllers` y `model`.
 - Crea una clase `Cliente`, con las anotaciones `@Data`y `@Builder`, y los siguientes atributos:

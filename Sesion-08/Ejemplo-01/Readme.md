@@ -1,17 +1,17 @@
 ## Ejemplo 1: Generación de documentación de métodos GET
 
-### Objetivo
+### OBJETIVO
 
-- Crear una prueba que ayude a validar el correcto funcionamiento de una clase o componente.
+- Crear una prueba que valide el correcto funcionamiento de una clase o componente.
 - Generar, con la misma prueba, la documentación de la invocación del método **GET**, incluyendo los parámetros de petición y la respuesta obtenida.
 
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+#### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 
@@ -20,7 +20,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web**, **Spring Rest Docs**, y **Lombok** como dependencias del proyecto. En automático se agregarán también las dependencias para realizar pruebas unitarias.
 

@@ -1,14 +1,14 @@
 ## Ejemplo 2: Generación de documentación de respuestas y personalización de documentación
 
-### Objetivo
+### OBJETIVO
 
 - Documentar la respuesta obtenida de la ejecución de un método de prueba.
 - Personalizar la página generada, con más información y una tabla de contenido.
 
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
 
 #### Desarrollo
@@ -20,7 +20,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web**, **Spring Rest Docs**, y **Lombok** como dependencias del proyecto. En automático se agregarán también las dependencias para realizar pruebas unitarias.
 

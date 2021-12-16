@@ -1,11 +1,12 @@
 ## Postwork Sesión 8
 
-### Objetivo
-- Aprender a generar documentación de servicios, basada en las pruebas unitarias de una aplicación 
-- Aprender la forma de personalizar la documentación generada con RestDoc
+### OBJETIVO
+- Generar documentación de servicios, basada en las pruebas unitarias de una aplicación.
+- Personalizar la documentación generada con RestDoc.
 - Distribuir la documentación de los servicios para ser consumida por otro desarrollador.
 
-#### Desarrollo   
+
+#### DESARROLLO
 1. Para cada una de las pruebas, unitarias o de integración, de los servicios REST creados, genera su documentación.
 
 2. Decora la clase de prueba con la anotación `@AutoConfigureRestDocs`. Puedes personalizar la URL de la petición y el puerto si lo consideras necesario.

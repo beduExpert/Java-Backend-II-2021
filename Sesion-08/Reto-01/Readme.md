@@ -1,16 +1,16 @@
 ## Reto 2: Generación de documentación para POST
 
-### Objetivo
+### OBJETIVO
 
 - Documentar los parámetros que se envían en el cuerpo de una petición POST.
 - Generar un documento HTML con la documentación para poder distribuirlo.
 
-#### Requisitos
+#### REQUISITOS
 - Tener instalado el IDE IntelliJ Idea Community Edition con el plugin de Lombok activado.
-- Tener instalada la última versión del JDK 11 (de Oracle u OpenJDK).
+- Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+#### DESARROLLO
 - Crea un nuevo proyecto usando Spring Initilizr y agrega las dependencias de **Spring Web**, **Spring Rest Docs** y **Lombok**.
 - Crea los subpaquetes: `controllers` y `model`.
 - Crea una clase `Cliente`, con las anotaciones `@Data`y `@Builder`, y los siguientes atributos:
@@ -39,7 +39,7 @@
 - Tipo de proyecto: **Maven Project**.
 - Lenguaje: **Java**.
 - Forma de empaquetar la aplicación: **jar**.
-- Versión de Java: **11**.
+- Versión de Java: **11** o **17**.
 
 3. En la siguiente ventana elige **Spring Web**, **Spring Rest Docs**, y **Lombok** como dependencias del proyecto. En automático se agregarán también las dependencias para realizar pruebas unitarias.
 
