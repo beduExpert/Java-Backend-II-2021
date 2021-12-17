@@ -1,4 +1,4 @@
-## Reto 2: Inicialización de base de datos con CommandLineRunner, Lombok y MapStruct
+## Reto: Inicialización de base de datos con CommandLineRunner, Lombok y MapStruct
 
 ### OBJETIVO
 - Obtener información almacenada en la base de datos.
@@ -13,7 +13,7 @@
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
-#### DESARROLLO
+### DESARROLLO
 - Crea un nuevo proyecto usando Spring Initilizr y agrega las dependencias de **Spring Web**, **Lombok**, **Spring Data JPA** y **MySQL Driver**.
 - Crea la siguiente estructura de paquetes:
 

@@ -1,4 +1,4 @@
-## Ejemplo 1: Persistencia de datos con Spring Data JPA
+## Ejemplo: Persistencia de datos con Spring Data JPA
 
 ### OBJETIVO
 - Hacer uso de las anotaciones básicas de JPA para indicar qué objeto debe ser tratado como una entidad de base de datos.
@@ -11,7 +11,7 @@
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
-#### Desarrollo
+### Desarrollo
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

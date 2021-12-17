@@ -1,4 +1,4 @@
-## Ejemplo 2: Pruebas unitarias de controladores con MockMvc
+## Ejemplo: Pruebas unitarias de controladores con MockMvc
 
 ### OBJETIVO
 
@@ -10,7 +10,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

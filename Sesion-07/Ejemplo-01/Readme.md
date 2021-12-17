@@ -1,4 +1,4 @@
-## Ejemplo 1: Pruebas unitarias con JUnit 5 y Mockito
+## Ejemplo: Pruebas unitarias con JUnit 5 y Mockito
 
 ### OBJETIVO
 
@@ -11,7 +11,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

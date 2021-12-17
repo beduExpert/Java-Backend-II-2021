@@ -1,4 +1,4 @@
-## Ejemplo 3: Uso de la consola embebdida H2 para manejar la base de datos
+## Ejemplo: Uso de la consola embebdida H2 para manejar la base de datos
 
 ### OBJETIVO
 - Usar la consola integrada con la base de datos embebida H2 para conectarnos a la instancia de MySQL.
@@ -10,7 +10,7 @@
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

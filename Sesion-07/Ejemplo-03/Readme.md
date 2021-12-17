@@ -1,4 +1,4 @@
-## Ejemplo 3: Pruebas integrales con TestRestTemplate
+## Ejemplo: Pruebas integrales con TestRestTemplate
 
 ### OBJETIVO
 
@@ -9,7 +9,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

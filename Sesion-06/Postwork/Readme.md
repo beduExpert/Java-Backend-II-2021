@@ -6,7 +6,7 @@
 - Usar la consola de H2 para visualizar la información de la base de datos
 
 
-#### DESARROLLO
+### DESARROLLO
 1. Agrega el driver de MySQL como dependencia del proyecto.
 
 2. Agrega las propiedades para realizar la conexión a la base de datos en el archivo `application.properties` del proyecto. 

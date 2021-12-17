@@ -1,4 +1,4 @@
-## Reto 2: Pruebas unitarias de métodos Post con MockMvc
+## Reto: Pruebas unitarias de métodos Post con MockMvc
 
 ### OBJETIVO
 
@@ -11,7 +11,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+### Desarrollo
 - Crea un nuevo proyecto usando Spring Initilizr y agrega las dependencias de **Spring Web** y **Lombok**.
 - Crea los subpaquetes: `controllers`, `model`, y `services`.
 - Crea una clase `Cliente`, con las anotaciones `@Data`y `@Builder`, y los siguientes atributos:

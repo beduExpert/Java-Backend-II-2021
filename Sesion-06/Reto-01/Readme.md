@@ -1,4 +1,4 @@
-## Reto 1: Persistencia de datos con Spring Data JPA
+## Reto: Persistencia de datos con Spring Data JPA
 
 ### OBJETIVO
 - Obtener información almacenada en la base de datos.
@@ -12,7 +12,7 @@
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
-#### Desarrollo
+### Desarrollo
 - Crea un nuevo proyecto usando Spring Initilizr y agrega las dependencias de **Spring Web**, **Lombok**, **Spring Data JPA** y **MySQL Driver**.
 - Crea los subpaquetes: `controllers`, `model` y `persistence`
 - Crea una clase `Producto` y coloca las anotaciones correspondientes de *Lombok* y *JPA*.

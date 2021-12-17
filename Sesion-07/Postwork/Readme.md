@@ -7,7 +7,7 @@
 
 
 
-#### DESARROLLO
+### DESARROLLO
 1. Termina la implementación de los métodos de negocio, que se encuentran en la capa services de la aplicación, para tener las funcionalidades básicas de guardado, eliminación, bajas y actualizaciones de cada uno de los tipos de entidad.
 
 2. Para el paso anterior será necesario implementar las funcionalidades en todas las capas de la aplicación, desde los controladores hasta los repositorios para el manejo de los datos almacenados.

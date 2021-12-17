@@ -10,7 +10,7 @@
 - Tener instalada la base de datos MySQL y los datos del usuario para conectarse
 
 
-#### Desarrollo
+### Desarrollo
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 
