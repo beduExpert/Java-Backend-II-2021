@@ -1,4 +1,4 @@
-## Ejemplo 2: Generación de documentación de respuestas y personalización de documentación
+## Ejemplo: Generación de documentación de respuestas y personalización de documentación
 
 ### OBJETIVO
 
@@ -11,7 +11,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+### Desarrollo
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

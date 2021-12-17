@@ -1,4 +1,4 @@
-## Reto 2: Generación de documentación para POST
+## Reto: Generación de documentación para POST
 
 ### OBJETIVO
 
@@ -10,7 +10,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### DESARROLLO
+### DESARROLLO
 - Crea un nuevo proyecto usando Spring Initilizr y agrega las dependencias de **Spring Web**, **Spring Rest Docs** y **Lombok**.
 - Crea los subpaquetes: `controllers` y `model`.
 - Crea una clase `Cliente`, con las anotaciones `@Data`y `@Builder`, y los siguientes atributos:

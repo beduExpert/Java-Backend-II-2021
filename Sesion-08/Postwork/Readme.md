@@ -6,7 +6,7 @@
 - Distribuir la documentación de los servicios para ser consumida por otro desarrollador.
 
 
-#### DESARROLLO
+### DESARROLLO
 1. Para cada una de las pruebas, unitarias o de integración, de los servicios REST creados, genera su documentación.
 
 2. Decora la clase de prueba con la anotación `@AutoConfigureRestDocs`. Puedes personalizar la URL de la petición y el puerto si lo consideras necesario.
