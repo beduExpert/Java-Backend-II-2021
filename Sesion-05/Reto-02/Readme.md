@@ -1,4 +1,4 @@
-## Reto 2: Uso de MapStruct usando atributos con nombres diferentes
+## Reto: Uso de MapStruct usando atributos con nombres diferentes
 
 ### OBJETIVO
 - Crear una interfaz básica de MapStruct que permita mapear de un objeto `Visita` a un objeto `VisitaDto` y viceversa.
@@ -9,7 +9,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+### Desarrollo
 - Crea un proyecto **Maven** desde IntelliJ Idea (este proyecto No deberá ser creado con Spring Initilizr).
 - Agrega las dependencias de MapStruct en el archivo **pom.xml**.
 - Agrega el plugin de preprocesamiento de MapStruct.

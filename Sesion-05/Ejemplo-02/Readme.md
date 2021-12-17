@@ -1,4 +1,4 @@
-## Ejemplo 2: Uso de MapStruct
+## Ejemplo: Uso de MapStruct
 
 ### OBJETIVO
 - Crear una interfaz básica de MapStruct que permita mapear de un objeto `Cliente` a un objeto `ClienteDto` y viceversa.
@@ -8,7 +8,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto **Maven** desde el IDE IntelliJ Idea. Este proyecto No deberá ser creado con Spring Initilizr.
 

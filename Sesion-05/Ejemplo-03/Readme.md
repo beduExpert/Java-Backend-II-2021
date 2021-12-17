@@ -1,4 +1,4 @@
-## Ejemplo 3: Uso de Lombok y MapStruct con Spring Boot
+## Ejemplo: Uso de Lombok y MapStruct con Spring Boot
 
 ### OBJETIVO
 - Crear una interfaz básica de MapStruct que permita mapear de un objeto `Cliente` a un objeto `ClienteDto` y viceversa.
@@ -10,7 +10,7 @@
 - Tener instalada la última versión del JDK 11 o 17.
 
 
-#### Desarrollo
+### Desarrollo
 
 1. Crea un proyecto Maven usando Spring Initializr desde el IDE IntelliJ Idea.
 

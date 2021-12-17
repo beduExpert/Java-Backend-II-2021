@@ -6,7 +6,7 @@
 - Exponer los objetos creados con MapStruct como componentes de Spring.
 
 
-#### DESARROLLO
+### DESARROLLO
 - Agrega las dependencias de *Lombok* y *MapStruct* en el archivo *pom.xml* del proyecto.
 
 - Los objetos del paquete `model` tienen, hasta ahora, solamente atributos, usa las siguientes anotaciones de Lombok:

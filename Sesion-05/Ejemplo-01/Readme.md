@@ -1,4 +1,4 @@
-## Ejemplo 1: Creación de getters, setters, constructores, equals y hashcode con @Data
+## Ejemplo: Creación de getters, setters, constructores, equals y hashcode con @Data
 
 ### OBJETIVO
 - Usar las anotaciones básicas de Lombok para la generación de getters, setters, constructores, equals y hashcode.
@@ -9,7 +9,7 @@
 - Tener instalada la herramienta Postman.
 
 
-#### DESARROLLO
+### DESARROLLO
 
 1. Crea un proyecto **Maven** desde el IDE IntelliJ Idea. Este proyecto No deberá ser creado con Spring Initilizr.
 

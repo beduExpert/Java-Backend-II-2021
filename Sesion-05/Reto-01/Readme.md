@@ -1,4 +1,4 @@
-## Reto 1: Creación de getters, setters, constructores, equals y hashcode con @Data
+## Reto: Creación de getters, setters, constructores, equals y hashcode con @Data
 
 ### OBJETIVO
 - Usar las anotaciones básicas de Lombok para la generación de getters, setters, constructores, equals y hashcode.
@@ -9,7 +9,7 @@
 - Tener instalada la herramienta Postman.
 
 
-#### Desarrollo
+### Desarrollo
 - Crea un proyecto **Maven** desde IntelliJ Idea (este proyecto No deberá ser creado con Spring Initilizr).
 - Agrega la dependencia de Lombok en el archivo **pom.xml**.
 - Agrega una clase `Principal` que tenga un método `main`.
